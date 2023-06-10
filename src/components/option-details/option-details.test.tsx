@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import OptionDetails from "./option-details";
+import OptionDetails from ".";
 
 describe("OptionDetails", () => {
   beforeEach(() => {

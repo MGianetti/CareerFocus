@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import IconButton from "./icon-button";
+import IconButton from ".";
 
 describe("IconButton", () => {
   beforeEach(() => {

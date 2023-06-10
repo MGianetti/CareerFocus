@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import MenuOption from "./menu-option";
+import MenuOption from ".";
 
 describe("MenuOption", () => {
   beforeEach(() => {

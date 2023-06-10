@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import InputSearch from "./input-search";
+import InputSearch from ".";
 
 describe("InputSearch", () => {
   beforeEach(() => {

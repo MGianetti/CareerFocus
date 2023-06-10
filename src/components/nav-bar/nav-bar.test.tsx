@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavBar from "./nav-bar";
+import NavBar from ".";
 
 describe("NavBar", () => {
   beforeEach(() => {

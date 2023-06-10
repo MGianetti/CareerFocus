@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import MenuNav from "./menu-nav";
+import MenuNav from ".";
 
 describe("MenuNav", () => {
   beforeEach(() => {

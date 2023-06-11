@@ -1,6 +1,5 @@
 import { Restaurant } from "./restaurantTypes";
 
-// @ts-ignore
 import { BASE_URL } from "../services.constants";
 
 const fetchRestaurant = async (restaurantId: string): Promise<Restaurant> => {

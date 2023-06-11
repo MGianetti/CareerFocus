@@ -3,7 +3,7 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { Restaurant } from "../../services/restaurants/restaurantTypes";
 import { Menu } from "../../services/menu/menuTypes";
 
-import { fetchRestaurant, fetchMenu } from "@services";
+import { fetchMenu, fetchRestaurant } from "../../services";
 
 type State = {
   restaurant: Restaurant | null;

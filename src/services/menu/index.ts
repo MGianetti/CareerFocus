@@ -1,6 +1,5 @@
 import { Menu } from "./menuTypes";
 
-// @ts-ignore
 import { BASE_URL } from "../services.constants";
 
 const fetchMenu = async (menuId: string): Promise<Menu> => {

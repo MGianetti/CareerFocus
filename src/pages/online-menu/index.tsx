@@ -15,7 +15,7 @@ const OnlineMenu: React.FC = () => {
           { label: "Contato", href: "/contato" },
         ]}
       />
-      <InputSearch placeholder="Search menu items" />
+      {/* <InputSearch placeholder="Search menu items" />
       <MenuNav
         options={[
           { label: "Burguers" },
@@ -39,7 +39,7 @@ const OnlineMenu: React.FC = () => {
         <MenuOption />
         <MenuOption />
         <MenuOption />
-      </Collapser>
+      </Collapser> */}
     </>
   );
 };

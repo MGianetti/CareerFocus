@@ -1,4 +1,13 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
+import {
+  aStyles,
+  liStyles,
+  navStyles,
+  ulStyles,
+  headerStyles,
+  imgStyles,
+  liSelectedStyles,
+} from "./nav-bar.styles";
 
 interface Option {
   label: string;
@@ -8,28 +17,39 @@ interface Props {
   options: Option[];
 }
 
+// TODO implement hamburguer and mobile menu
 const NavBar: React.FC<Props> = (props) => {
   const { options } = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(0);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleOptionChange =
+    (option: number) => (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      event.preventDefault();
+      setSelectedOption(option);
+    };
 
   return (
-    <nav className="navbar">
-      <ul style={isOpen ? {} : {}}>
-        {options.map((option) => {
+    <nav style={navStyles}>
+      <ul style={ulStyles}>
+        {options.map((option, index) => {
           const optionKey = `${option.label}-key`;
+          const isOptionSelected = index === selectedOption;
           return (
-            <li key={optionKey}>
-              <a href="">{option.label}</a>
+            <li
+              style={isOptionSelected ? liSelectedStyles : liStyles}
+              key={optionKey}
+            >
+              <a href="" style={aStyles} onClick={handleOptionChange(index)}>
+                {option.label}
+              </a>
             </li>
           );
         })}
       </ul>
 
-      <button onClick={handleToggle}>{isOpen ? "Close" : "Open"}</button>
+      <header style={headerStyles}>
+        <img style={imgStyles} src="src/assets/headerBackground.png" />
+      </header>
     </nav>
   );
 };

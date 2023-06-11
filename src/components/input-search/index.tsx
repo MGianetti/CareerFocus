@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  placeholder?: string;
+  placeholder: string;
 }
 
 const InputSearch: React.FC<Props> = (props) => {

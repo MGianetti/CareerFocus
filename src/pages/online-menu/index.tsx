@@ -8,27 +8,38 @@ import MenuOption from "@components/menu-option";
 const OnlineMenu: React.FC = () => {
   return (
     <>
-      <NavBar />
-      <InputSearch />
-      <MenuNav />
-      <Collapser>
+      <NavBar
+        options={[
+          { label: "Menu", href: "/menu" },
+          { label: "Entrar", href: "/entrar" },
+          { label: "Contato", href: "/contato" },
+        ]}
+      />
+      <InputSearch placeholder="Search menu items" />
+      <MenuNav
+        options={[
+          { label: "Burguers" },
+          { label: "Drinks" },
+          { label: "Desserts" },
+        ]}
+      />
+      <Collapser category={"Burguers"}>
         <MenuOption />
         <MenuOption />
         <MenuOption />
       </Collapser>
-      <Collapser>
+      <Collapser category={"Drinks"}>
         <MenuOption />
         <MenuOption />
         <MenuOption />
         <MenuOption />
       </Collapser>
-      <Collapser>
+      <Collapser category={"Desserts"}>
         <MenuOption />
         <MenuOption />
         <MenuOption />
         <MenuOption />
       </Collapser>
-      <Collapser></Collapser>
     </>
   );
 };

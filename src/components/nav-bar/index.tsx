@@ -1,11 +1,7 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-interface Props {
-  children: ReactNode;
-}
-
-const NavBar: React.FC<Props> = ({ children }) => {
-  return <div>{children}</div>;
+const NavBar: React.FC = () => {
+  return <div></div>;
 };
 
 export default NavBar;

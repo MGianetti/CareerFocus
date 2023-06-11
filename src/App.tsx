@@ -1,5 +1,7 @@
+import OnlineMenu from "./pages/online-menu/index";
+
 function App() {
-  return "Hello QikServe";
+  return <OnlineMenu />;
 }
 
 export default App;

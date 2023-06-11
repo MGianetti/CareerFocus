@@ -1,11 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 interface Props {
-  children: ReactNode;
+  placeholder?: string;
 }
 
-const InputSearch: React.FC<Props> = ({ children }) => {
-  return <div>{children}</div>;
+const InputSearch: React.FC<Props> = (props) => {
+  const { placeholder } = props;
+  return <input placeholder={placeholder} />;
 };
 
 export default InputSearch;

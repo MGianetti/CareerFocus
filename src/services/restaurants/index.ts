@@ -3,9 +3,7 @@ import { Restaurant } from "./restaurantTypes";
 // @ts-ignore
 import { BASE_URL } from "../services.constants";
 
-export const fetchRestaurant = async (
-  restaurantId: string
-): Promise<Restaurant> => {
+const fetchRestaurant = async (restaurantId: string): Promise<Restaurant> => {
   const response = await fetch(`${BASE_URL}/${restaurantId}`);
 
   if (!response.ok) {
@@ -17,3 +15,5 @@ export const fetchRestaurant = async (
   const restaurant: Restaurant = await response.json();
   return restaurant;
 };
+
+export default fetchRestaurant;

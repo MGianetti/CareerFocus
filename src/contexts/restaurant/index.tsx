@@ -3,8 +3,7 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { Restaurant } from "../../services/restaurants/restaurantTypes";
 import { Menu } from "../../services/menu/menuTypes";
 
-import { fetchRestaurant } from "../../services/restaurants/index";
-import { fetchMenu } from "../../services/menu/index";
+import { fetchRestaurant, fetchMenu } from "@services";
 
 type State = {
   restaurant: Restaurant | null;
@@ -54,6 +53,7 @@ export const RestaurantProvider: React.FC<React.PropsWithChildren<{}>> = ({
 
     fetchData();
   }, []);
+  console.log({ state });
 
   return (
     <DataContext.Provider value={[state, dispatch]}>

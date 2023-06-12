@@ -1,4 +1,6 @@
+import { SearchIcon } from "@components/icon";
 import React from "react";
+import { inputSearchStyles, searchIconStyles } from "./input-search.styles";
 
 interface Props {
   placeholder: string;
@@ -6,7 +8,12 @@ interface Props {
 
 const InputSearch: React.FC<Props> = (props) => {
   const { placeholder } = props;
-  return <input placeholder={placeholder} />;
+  return (
+    <>
+      <SearchIcon style={searchIconStyles} />
+      <input placeholder={placeholder} style={inputSearchStyles} />
+    </>
+  );
 };
 
 export default InputSearch;

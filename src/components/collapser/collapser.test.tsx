@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Collapser from ".";
+import Collapsible from ".";
 
-describe("Collapser", () => {
+describe("Collapsible", () => {
   beforeEach(() => {
-    render(<Collapser>Hello Jest</Collapser>);
+    render(<Collapsible>Hello Jest</Collapsible>);
   });
 
   it("should render without errors", () => {});

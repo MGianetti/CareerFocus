@@ -12,6 +12,7 @@ export const ulStyles = {
   display: "flex",
   justifyContent: "center",
   margin: 0,
+  padding: 0,
   height: "52px",
 };
 
@@ -50,3 +51,27 @@ export const imgStyles = {
   height: "100%",
   objectFit: "cover",
 };
+
+// Mobile
+
+export const mobileWrapperStyles = {
+  justifyContent: "center",
+  display: "flex",
+  alignContent: "center",
+  alignItems: "center",
+};
+
+export const borderWrapperStyles = { ...mobileWrapperStyles, width: "10%" };
+
+export const centralWrapperStyles = {
+  ...mobileWrapperStyles,
+  color: "white",
+  fontFamily: defaultTheme.typography.fontFamily,
+  fontWeight: defaultTheme.typography.fontWeight.normal,
+  width: "80%",
+  fontSize: "18px",
+};
+
+export const iconStyles = { color: "white", cursor: "pointer" };
+
+export const mobileStyles = { display: "flex", width: "100%" };

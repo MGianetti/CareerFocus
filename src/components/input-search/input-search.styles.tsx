@@ -1,5 +1,10 @@
 import { defaultTheme } from "@theme";
 
+export const wrapperStyles = {
+  position: "relative",
+  top: "-15px",
+};
+
 export const searchIconStyles = {
   color: "#DADADA",
   position: "relative",

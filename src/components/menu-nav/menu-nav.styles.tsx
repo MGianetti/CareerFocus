@@ -32,3 +32,8 @@ export const imageStyles = {
   borderRadius: "100%",
   border: "3px solid white",
 };
+
+export const imageSelectedStyles = {
+  borderRadius: "100%",
+  border: "3px solid #4F372F",
+};

@@ -5,6 +5,7 @@ import {
   imageStyles,
   menuItemLabelStyles,
   menuItemSelectedStyles,
+  imageSelectedStyles,
 } from "./menu-nav.styles";
 
 interface Option {
@@ -39,7 +40,10 @@ const MenuNav: React.FC<Props> = (props) => {
             style={isOptionSelected ? menuItemSelectedStyles : menuItemStyles}
             onClick={handleOptionChange(index)}
           >
-            <img style={imageStyles} src={option.src} />
+            <img
+              style={isOptionSelected ? imageSelectedStyles : imageStyles}
+              src={option.src}
+            />
             <span style={menuItemLabelStyles}>{option.label}</span>
           </li>
         );

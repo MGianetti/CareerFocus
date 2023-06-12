@@ -1,7 +1,15 @@
-import React from "react";
+import React, { MouseEventHandler, useState } from "react";
+import {
+  menuItemStyles,
+  menuNavStyles,
+  imageStyles,
+  menuItemLabelStyles,
+  menuItemSelectedStyles,
+} from "./menu-nav.styles";
 
 interface Option {
   label: string;
+  src: string;
 }
 interface Props {
   options: Option[];
@@ -9,13 +17,30 @@ interface Props {
 
 const MenuNav: React.FC<Props> = (props) => {
   const { options } = props;
+
+  const [selectedOption, setSelectedOption] = useState(0);
+
+  const handleOptionChange =
+    (option: number) =>
+    (event: MouseEventHandler<HTMLAnchorElement> | undefined) => {
+      event.preventDefault();
+      setSelectedOption(option);
+    };
+
   return (
-    <nav>
-      {options.map((option) => {
+    <nav style={menuNavStyles}>
+      {options.map((option, index) => {
         const optionKey = `${option.label}-key`;
+        const isOptionSelected = index === selectedOption;
+
         return (
-          <li key={optionKey}>
-            <a>{option.label}</a>
+          <li
+            key={optionKey}
+            style={isOptionSelected ? menuItemSelectedStyles : menuItemStyles}
+            onClick={handleOptionChange(index)}
+          >
+            <img style={imageStyles} src={option.src} />
+            <span style={menuItemLabelStyles}>{option.label}</span>
           </li>
         );
       })}

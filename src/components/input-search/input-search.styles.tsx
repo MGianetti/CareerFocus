@@ -14,4 +14,5 @@ export const inputSearchStyles = {
   height: "40px",
   lineHeight: "18px",
   fontFamily: "Roboto",
+  paddingLeft: "40px",
 };

@@ -2,14 +2,23 @@ import { defaultTheme } from "@theme";
 
 export const wrapperStyles = {
   position: "relative",
-  top: "-15px",
+  display: "flex",
+  alignContent: "center",
+  alignItems: "center",
+  margin: "5px 0",
+  width: "calc(100% + 34px)",
+  marginLeft: "-20px",
+};
+
+export const wrapperSmStyles = {
+  ...wrapperStyles,
+  padding: "0 30px",
 };
 
 export const searchIconStyles = {
   color: "#DADADA",
   position: "relative",
-  top: "35.7px",
-  left: "9px",
+  left: "34px",
 };
 
 export const inputSearchStyles = {

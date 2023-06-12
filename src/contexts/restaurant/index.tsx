@@ -53,7 +53,6 @@ export const RestaurantProvider: React.FC<React.PropsWithChildren<{}>> = ({
 
     fetchData();
   }, []);
-  console.log({ state });
 
   return (
     <DataContext.Provider value={[state, dispatch]}>

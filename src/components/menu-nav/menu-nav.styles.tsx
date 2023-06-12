@@ -2,6 +2,7 @@ import { defaultTheme } from "@theme";
 
 export const menuNavStyles = {
   display: "flex",
+  minWidth: "500px",
 };
 
 export const menuItemStyles = {

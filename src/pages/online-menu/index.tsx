@@ -1,11 +1,25 @@
 import React from "react";
-import InputSearch from "@components/input-search";
-import NavBar from "@components/nav-bar";
-import MenuNav from "@components/menu-nav";
-import Collapser from "@components/collapser";
-import MenuOption from "@components/menu-option";
+import {
+  Collapser,
+  InputSearch,
+  MenuNav,
+  MenuOption,
+  NavBar,
+} from "@components";
+import { MainLayout } from "@layouts";
+import { useResponsiveness } from "@contexts/responsiveness";
+import {
+  chartWrapperStyles,
+  menuNavWrapperSmStyles,
+  menuNavWrapperStyles,
+  wrapperStyles,
+} from "./online-menu.styles";
 
 const OnlineMenu: React.FC = () => {
+  const { isSmall } = useResponsiveness();
+
+  isSmall;
+
   return (
     <>
       <NavBar
@@ -15,31 +29,40 @@ const OnlineMenu: React.FC = () => {
           { label: "Contato", href: "/contato" },
         ]}
       />
-      {/* <InputSearch placeholder="Search menu items" />
-      <MenuNav
-        options={[
-          { label: "Burguers" },
-          { label: "Drinks" },
-          { label: "Desserts" },
-        ]}
-      />
-      <Collapser category={"Burguers"}>
-        <MenuOption />
-        <MenuOption />
-        <MenuOption />
-      </Collapser>
-      <Collapser category={"Drinks"}>
-        <MenuOption />
-        <MenuOption />
-        <MenuOption />
-        <MenuOption />
-      </Collapser>
-      <Collapser category={"Desserts"}>
-        <MenuOption />
-        <MenuOption />
-        <MenuOption />
-        <MenuOption />
-      </Collapser> */}
+      <MainLayout>
+        <InputSearch placeholder="Search menu items" />
+        <div style={wrapperStyles}>
+          <div style={isSmall ? menuNavWrapperSmStyles : menuNavWrapperStyles}>
+            <MenuNav
+              options={[
+                { label: "Burguers", src: "/src/assets/burguerOption.png" },
+                { label: "Drinks", src: "/src/assets/drinksOption.png" },
+                { label: "Desserts", src: "/src/assets/dessertsOption.png" },
+              ]}
+            />
+            {[
+              { label: "Burguers", src: "/src/assets/hardCoreBurguer.png" },
+              { label: "Drinks", src: "/src/assets/hardCoreBurguer.png" },
+              { label: "Desserts", src: "/src/assets/hardCoreBurguer.png" },
+            ].map((menuOption) => {
+              const { label, src } = menuOption;
+              return (
+                <Collapser category={label}>
+                  <MenuOption
+                    title={"Hardcore"}
+                    description={
+                      "180g angus beef burger, plus ribs, gruyere cheese..."
+                    }
+                    price={"R$33,00"}
+                    imgSrc={src}
+                  />
+                </Collapser>
+              );
+            })}
+          </div>
+          {isSmall ? null : <div style={chartWrapperStyles}></div>}
+        </div>
+      </MainLayout>
     </>
   );
 };

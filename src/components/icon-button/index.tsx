@@ -10,12 +10,13 @@ import {
 import { iconButtonStyles } from "./icon-button.styles";
 
 type IconButtonProps = {
-  icon: "add" | "chevron" | "close" | "hamburguer" | "remove" | "search";
-  size?: number;
-  color?: string;
-  position: string;
   backgroundColor?: string;
+  color?: string;
+  icon: "add" | "chevron" | "close" | "hamburguer" | "remove" | "search";
   onClick?: () => void;
+  position: string;
+  size?: number;
+  margin?: string;
 };
 
 const iconComponents = {
@@ -33,6 +34,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   color = "black",
   backgroundColor = "white",
   position = "fixed",
+  margin = "0",
   onClick,
 }) => {
   const IconComponent = iconComponents[icon];
@@ -48,6 +50,7 @@ const IconButton: React.FC<IconButtonProps> = ({
           size,
           backgroundColor,
           position,
+          margin,
         }),
       }}
       onClick={onClick}

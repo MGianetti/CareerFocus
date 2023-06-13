@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Collapser,
   InputSearch,
@@ -14,14 +14,17 @@ import {
   menuNavWrapperStyles,
   wrapperStyles,
 } from "./online-menu.styles";
+import Popover from "@components/pop-over";
 
 const OnlineMenu: React.FC = () => {
+  const [isPopoverOpen, setIsPropoverOpen] = useState(false);
   const { isSmall } = useResponsiveness();
-
-  isSmall;
 
   return (
     <>
+      <Popover isOpen={isPopoverOpen} onClose={() => setIsPropoverOpen(false)}>
+        <h1>HelloPopOver</h1>
+      </Popover>
       <NavBar
         options={[
           { label: "Menu", href: "/menu" },
@@ -55,6 +58,8 @@ const OnlineMenu: React.FC = () => {
                     }
                     price={"R$33,00"}
                     imgSrc={src}
+                    isPopoverOpen={isPopoverOpen}
+                    onClick={() => setIsPropoverOpen(true)}
                   />
                 </Collapser>
               );

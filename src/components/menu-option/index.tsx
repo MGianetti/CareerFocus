@@ -15,15 +15,16 @@ interface Props {
   description: string;
   price: string;
   imgSrc: string;
+  isPopoverOpen: boolean;
+  onClick: () => void;
 }
 
 const MenuOption: React.FC<Props> = (props) => {
-  const { title, description, price, imgSrc } = props;
+  const { title, description, price, imgSrc, onClick } = props;
 
   return (
     <>
-      <Popover>Hello</Popover>
-      <div style={menuOptionWrapperStyles}>
+      <div style={menuOptionWrapperStyles} onClick={onClick}>
         <div style={optionsDescriptionStyles}>
           <div style={badgeTitleStyles}>
             <Badge>1</Badge>

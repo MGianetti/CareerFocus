@@ -1,6 +1,14 @@
 import React, { ReactNode, useState } from "react";
 import { createPortal } from "react-dom";
-import { contentStyles, contentWrapperStyles } from "./pop-over.styles";
+import {
+  closeStyles,
+  contentSmStyles,
+  contentStyles,
+  contentWrapperStyles,
+} from "./pop-over.styles";
+import { IconButton } from "@components";
+import useEscapeKey from "@hooks/useEscapeKey";
+import { useResponsiveness } from "@contexts/responsiveness";
 
 type PopoverContentProps = {
   onClose: () => void;
@@ -10,38 +18,44 @@ type PopoverContentProps = {
 const PopoverContent: React.FC<PopoverContentProps> = (props) => {
   const { onClose, children } = props;
 
+  const { isExtraSmall } = useResponsiveness();
+  useEscapeKey(onClose);
+
   return (
-    <div style={contentWrapperStyles}>
-      <div style={contentStyles}>
-        <div>
-          <button onClick={onClose}>Close</button>
+    <>
+      <div style={contentWrapperStyles} onClick={onClose} />
+
+      <div style={isExtraSmall ? contentSmStyles : contentStyles}>
+        <div style={closeStyles} onClick={(e) => e.stopPropagation()}>
+          <IconButton
+            icon="close"
+            onClick={onClose}
+            size={32}
+            position="fixed"
+          />
         </div>
         {children}
       </div>
-    </div>
+    </>
   );
 };
 
 type PopoverProps = {
   children: ReactNode;
+  onClose: () => void;
+  isOpen: boolean;
 };
 
 const Popover: React.FC<PopoverProps> = (props) => {
-  const { children } = props;
-  const [showPopover, setShowPopover] = useState(false);
-
-  const handleOpenPopover = () => {
-    setShowPopover(true);
-  };
+  const { children, onClose, isOpen } = props;
 
   const handleClosePopover = () => {
-    setShowPopover(false);
+    onClose();
   };
 
   return (
     <div>
-      <button onClick={handleOpenPopover}>Open Popover</button>
-      {showPopover &&
+      {isOpen &&
         createPortal(
           <PopoverContent onClose={handleClosePopover}>
             {children}

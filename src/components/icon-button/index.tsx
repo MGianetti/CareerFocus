@@ -13,6 +13,7 @@ type IconButtonProps = {
   icon: "add" | "chevron" | "close" | "hamburguer" | "remove" | "search";
   size?: number;
   color?: string;
+  position: string;
   backgroundColor?: string;
   onClick?: () => void;
 };
@@ -31,6 +32,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   size = 24,
   color = "black",
   backgroundColor = "white",
+  position = "fixed",
   onClick,
 }) => {
   const IconComponent = iconComponents[icon];
@@ -45,6 +47,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         ...iconButtonStyles({
           size,
           backgroundColor,
+          position,
         }),
       }}
       onClick={onClick}

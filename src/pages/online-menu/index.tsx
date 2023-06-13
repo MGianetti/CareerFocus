@@ -15,6 +15,7 @@ import {
   wrapperStyles,
 } from "./online-menu.styles";
 import Popover from "@components/pop-over";
+import ItemDetails from "@pages/item-details";
 
 const OnlineMenu: React.FC = () => {
   const [isPopoverOpen, setIsPropoverOpen] = useState(false);
@@ -23,7 +24,7 @@ const OnlineMenu: React.FC = () => {
   return (
     <>
       <Popover isOpen={isPopoverOpen} onClose={() => setIsPropoverOpen(false)}>
-        <h1>HelloPopOver</h1>
+        <ItemDetails />
       </Popover>
       <NavBar
         options={[

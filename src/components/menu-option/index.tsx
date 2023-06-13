@@ -6,6 +6,7 @@ import {
   optionsDescriptionStyles,
   titleStyles,
 } from "./menu-option.styles";
+import { Badge } from "@components";
 
 interface Props {
   title: string;
@@ -20,7 +21,17 @@ const MenuOption: React.FC<Props> = (props) => {
   return (
     <div style={menuOptionWrapperStyles}>
       <div style={optionsDescriptionStyles}>
-        <h1 style={titleStyles}>{title}</h1>
+        <div
+          style={{
+            fontFamily: "Roboto",
+            fontSize: "14px",
+            display: "flex",
+            color: "white",
+          }}
+        >
+          <Badge>1</Badge>
+          <h1 style={titleStyles}>{title}</h1>
+        </div>
         <p>{description}</p>
         <span>{price}</span>
       </div>

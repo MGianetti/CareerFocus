@@ -1,5 +1,23 @@
 import { defaultTheme } from "@theme";
 
-export const iconButtonStyles = {
-  color: defaultTheme.colors.background,
+type IconButtonStylesProps = {
+  size: number;
+  backgroundColor: string;
 };
+
+type IconButtonStyles = (props: IconButtonStylesProps) => React.CSSProperties;
+
+export const iconButtonStyles: IconButtonStyles = ({
+  size,
+  backgroundColor,
+}) => ({
+  width: size,
+  height: size,
+  borderRadius: "50%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor,
+  border: "none",
+  cursor: "pointer",
+});

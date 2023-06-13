@@ -5,8 +5,10 @@ import {
   menuOptionWrapperStyles,
   optionsDescriptionStyles,
   titleStyles,
+  badgeTitleStyles,
 } from "./menu-option.styles";
 import { Badge } from "@components";
+import Popover from "@components/pop-over";
 
 interface Props {
   title: string;
@@ -19,26 +21,22 @@ const MenuOption: React.FC<Props> = (props) => {
   const { title, description, price, imgSrc } = props;
 
   return (
-    <div style={menuOptionWrapperStyles}>
-      <div style={optionsDescriptionStyles}>
-        <div
-          style={{
-            fontFamily: "Roboto",
-            fontSize: "14px",
-            display: "flex",
-            color: "white",
-          }}
-        >
-          <Badge>1</Badge>
-          <h1 style={titleStyles}>{title}</h1>
+    <>
+      <Popover>Hello</Popover>
+      <div style={menuOptionWrapperStyles}>
+        <div style={optionsDescriptionStyles}>
+          <div style={badgeTitleStyles}>
+            <Badge>1</Badge>
+            <h1 style={titleStyles}>{title}</h1>
+          </div>
+          <p>{description}</p>
+          <span>{price}</span>
         </div>
-        <p>{description}</p>
-        <span>{price}</span>
+        <div style={imageWrapperStyles}>
+          <img style={imgStyles} src={imgSrc}></img>
+        </div>
       </div>
-      <div style={imageWrapperStyles}>
-        <img style={imgStyles} src={imgSrc}></img>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -32,3 +32,10 @@ export const imageWrapperStyles = {
   overflow: "hidden",
   width: "128px",
 };
+
+export const badgeTitleStyles = {
+  fontFamily: "Roboto",
+  fontSize: "14px",
+  display: "flex",
+  color: "white",
+};

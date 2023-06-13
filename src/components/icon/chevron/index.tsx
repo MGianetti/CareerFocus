@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface ChevronIconProps {
-  isOpen: boolean;
+  isOpen?: boolean;
 }
 
 const ChevronIcon: FC<ChevronIconProps> = ({ isOpen }) => (

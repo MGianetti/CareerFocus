@@ -14,6 +14,7 @@ export const contentStyles = {
   left: "calc(50% - 240px)",
   position: "fixed",
   top: 0,
+  marginTop: "62px",
   width: "480px ",
 };
 

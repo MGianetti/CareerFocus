@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import {
   closeStyles,
@@ -32,6 +32,7 @@ const PopoverContent: React.FC<PopoverContentProps> = (props) => {
             onClick={onClose}
             size={32}
             position="fixed"
+            margin={"48px 27px 0 0"}
           />
         </div>
         {children}

@@ -12,6 +12,7 @@ export const buttonStyles: React.CSSProperties = {
   background: "transparent",
   border: "none",
   color: "#4F372F",
+  cursor: "pointer",
 };
 
 export const categoryStyles: React.CSSProperties = {

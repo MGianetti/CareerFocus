@@ -38,3 +38,14 @@ export const imageSelectedStyles: React.CSSProperties = {
   borderRadius: "100%",
   border: "3px solid #4F372F",
 };
+
+export const whiteBorderStyles: React.CSSProperties = {
+  width: "84px",
+  height: "84px",
+  background: "transparent",
+  position: "absolute",
+  marginTop: "-65px",
+  marginLeft: "3px",
+  border: "3px solid white",
+  borderRadius: "50%",
+};

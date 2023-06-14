@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const HamburgerIcon: FC = (props) => (
+const HamburgerIcon: FC = (props: React.CSSProperties) => (
   <svg
     width="24"
     height="24"

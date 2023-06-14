@@ -7,8 +7,8 @@ interface ButtonProps {
   margin: number | string;
   padding: number | string;
   borderRadius: number | string;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   onClick?: () => undefined;
 }
 

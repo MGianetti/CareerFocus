@@ -1,29 +1,29 @@
 import { defaultTheme } from "@theme";
 
-export const wrapperStyles = {
+export const wrapperStyles: React.CSSProperties = {
   backgroundColor: "#F8F9FA",
   height: " 1337px",
   padding: "30px 35px",
   display: "flex",
 };
 
-export const menuNavWrapperStyles = {
+export const menuNavWrapperStyles: React.CSSProperties = {
   backgroundColor: "white",
   padding: "30px 35px",
   width: "600px",
   boxShadow: "0px 2px 14px rgba(0, 0, 0, 0.15)",
 };
 
-export const menuNavWrapperSmStyles = {
+export const menuNavWrapperSmStyles: React.CSSProperties = {
   ...menuNavWrapperStyles,
   width: "100%",
   minWidth: "500px",
 };
 
-export const chartWrapperStyles = {
+export const basketWrapperStyles: React.CSSProperties = {
   backgroundColor: "white",
   width: "320px",
-  height: "64px",
+  height: "fit-content",
   marginLeft: "35px",
   boxShadow: "0px 2px 14px rgba(0, 0, 0, 0.15)",
 };

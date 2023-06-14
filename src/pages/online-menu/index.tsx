@@ -9,13 +9,14 @@ import {
 import { MainLayout } from "@layouts";
 import { useResponsiveness } from "@contexts/responsiveness";
 import {
-  chartWrapperStyles,
+  basketWrapperStyles,
   menuNavWrapperSmStyles,
   menuNavWrapperStyles,
   wrapperStyles,
 } from "./online-menu.styles";
 import Popover from "@components/pop-over";
 import ItemDetails from "@pages/item-details";
+import Basket from "@pages/basket";
 
 const OnlineMenu: React.FC = () => {
   const [isPopoverOpen, setIsPropoverOpen] = useState(false);
@@ -66,7 +67,11 @@ const OnlineMenu: React.FC = () => {
               );
             })}
           </div>
-          {isSmall ? null : <div style={chartWrapperStyles}></div>}
+          {isSmall ? null : (
+            <div style={basketWrapperStyles}>
+              <Basket />
+            </div>
+          )}
         </div>
       </MainLayout>
     </>

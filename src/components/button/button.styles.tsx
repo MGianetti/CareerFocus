@@ -29,4 +29,5 @@ export const buttonStyles: ButtonStyles = ({
   alignItems: "center",
   backgroundColor,
   cursor: "pointer",
+  border: "unset",
 });

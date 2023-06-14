@@ -35,6 +35,30 @@ const ItemDetails: React.FC = () => {
 
         <input checked={true} style={checkboxStyles} type="checkbox" />
       </div>
+      <div style={modifierWrapperStyles}>
+        <div>
+          <h1 style={modifierHeadingStyles}>Smash</h1>
+          <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
+        </div>
+
+        <input checked={true} style={checkboxStyles} type="checkbox" />
+      </div>
+      <div style={modifierWrapperStyles}>
+        <div>
+          <h1 style={modifierHeadingStyles}>Smash</h1>
+          <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
+        </div>
+
+        <input checked={true} style={checkboxStyles} type="checkbox" />
+      </div>
+      <div style={modifierWrapperStyles}>
+        <div>
+          <h1 style={modifierHeadingStyles}>Smash</h1>
+          <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
+        </div>
+
+        <input checked={true} style={checkboxStyles} type="checkbox" />
+      </div>
 
       <AddToOrder />
     </div>

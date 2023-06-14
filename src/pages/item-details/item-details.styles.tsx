@@ -3,8 +3,13 @@ import { defaultTheme } from "@theme";
 export const wrapperStyles: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
+  overflowY: "scroll",
+  maxHeight: "720px",
 };
-export const imgStyles: React.CSSProperties = { objectFit: "cover" };
+export const imgStyles: React.CSSProperties = {
+  objectFit: "cover",
+  margin: "-1px",
+};
 
 export const detailsWraperStyles: React.CSSProperties = {
   padding: "16px",
@@ -68,12 +73,11 @@ export const modifierParagraphStyles: React.CSSProperties = {
 export const checkboxStyles: React.CSSProperties = {
   width: "20px",
   height: "20px",
-  backgroundcolor: "white",
+  backgroundColor: "white",
   borderRadius: "50%",
   verticalAlign: "middle",
   border: "3px solid #5F5F5F",
   appearance: "none",
-  "-webkit-appearance": "none",
   outline: "none",
   cursor: "pointer",
   display: "flex",

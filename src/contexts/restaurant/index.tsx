@@ -8,6 +8,7 @@ import { fetchMenu, fetchRestaurant } from "../../services";
 type State = {
   restaurant: Restaurant | null;
   menu: Menu | null;
+  isLoading: boolean;
 };
 
 type Action =
@@ -17,6 +18,7 @@ type Action =
 const initialState: State = {
   restaurant: null,
   menu: null,
+  isLoading: true,
 };
 
 const DataContext = createContext<[State, React.Dispatch<Action>]>([

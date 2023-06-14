@@ -14,7 +14,7 @@ interface Option {
   src: string;
 }
 interface Props {
-  options: Option[];
+  options: Option[] | undefined;
 }
 
 const MenuNav: React.FC<Props> = (props) => {

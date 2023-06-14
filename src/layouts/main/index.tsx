@@ -5,16 +5,19 @@ import { mainContent, mainContentSmall, mainWrapper } from "./main.styles";
 
 interface Props {
   children: ReactNode;
+  isLoading: boolean;
 }
 
-const Main: React.FC<Props> = ({ children }) => {
+const Main: React.FC<Props> = (props) => {
+  const { children, isLoading } = props;
   const { isSmall } = useResponsiveness();
 
   const responsiveStyle = isSmall ? mainContentSmall : mainContent;
 
   return (
     <div style={mainWrapper}>
-      <div style={responsiveStyle}>{children}</div>
+      {!isLoading && <div style={responsiveStyle}>{children}</div>}
+      {isLoading && <div style={responsiveStyle}>Loading</div>}
     </div>
   );
 };

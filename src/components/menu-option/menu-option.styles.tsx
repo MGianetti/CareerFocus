@@ -39,3 +39,5 @@ export const badgeTitleStyles: React.CSSProperties = {
   display: "flex",
   color: "white",
 };
+
+export const descriptionStyles: React.CSSProperties = { maxWidth: "390px" };

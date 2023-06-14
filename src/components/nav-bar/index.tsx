@@ -14,6 +14,7 @@ import {
 } from "./nav-bar.styles";
 import { useResponsiveness } from "@contexts/responsiveness";
 import { HamburgerIcon } from "@components/icon";
+import { useData } from "@contexts/restaurant";
 
 interface Option {
   label: string;
@@ -27,8 +28,10 @@ const NavBar: React.FC<Props> = (props) => {
   const { options } = props;
 
   const { isExtraSmall } = useResponsiveness();
-
+  const [{ restaurant }] = useData();
   const [selectedOption, setSelectedOption] = useState(0);
+
+  const isLoading = restaurant === null;
 
   const handleOptionChange =
     (option: number) =>
@@ -71,7 +74,12 @@ const NavBar: React.FC<Props> = (props) => {
       </ul>
 
       <header style={headerStyles}>
-        <img style={imgStyles} src="src/assets/headerBackground.png" />
+        {!isLoading && (
+          <img
+            style={imgStyles}
+            src={`${restaurant?.webSettings.bannerImage}`}
+          />
+        )}
       </header>
     </nav>
   );

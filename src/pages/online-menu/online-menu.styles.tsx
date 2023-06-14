@@ -2,7 +2,6 @@ import { defaultTheme } from "@theme";
 
 export const wrapperStyles: React.CSSProperties = {
   backgroundColor: "#F8F9FA",
-  height: " 1337px",
   padding: "30px 35px",
   display: "flex",
 };

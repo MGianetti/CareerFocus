@@ -1,3 +1,4 @@
+import AddToOrder from "./add-to-order";
 import {
   detailsWraperStyles,
   headingParagraphStyles,
@@ -34,6 +35,8 @@ const ItemDetails: React.FC = () => {
 
         <input checked={true} style={checkboxStyles} type="checkbox" />
       </div>
+
+      <AddToOrder />
     </div>
   );
 };

@@ -14,7 +14,27 @@ import {
   checkboxStyles,
 } from "./item-details.styles";
 
-const ItemDetails: React.FC = () => {
+interface Image {
+  id: number;
+  image: string;
+}
+
+interface ItemDetailsProp {
+  id: number;
+  name: string;
+  description: string;
+  alcoholic: number;
+  price: number;
+  position: number;
+  visible: number;
+  availabilityType: string;
+  available: boolean;
+  sku: string;
+  images: Image[];
+  quantity: number;
+}
+
+const ItemDetails: React.FC<ItemDetailsProp> = (props) => {
   return (
     <div style={wrapperStyles}>
       <img style={imgStyles} src="/src/assets/smashBurguerBanner.png" />
@@ -33,7 +53,7 @@ const ItemDetails: React.FC = () => {
           <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
         </div>
 
-        <input checked={true} style={checkboxStyles} type="checkbox" />
+        <input style={checkboxStyles} type="checkbox" />
       </div>
       <div style={modifierWrapperStyles}>
         <div>
@@ -41,7 +61,7 @@ const ItemDetails: React.FC = () => {
           <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
         </div>
 
-        <input checked={true} style={checkboxStyles} type="checkbox" />
+        <input style={checkboxStyles} type="checkbox" />
       </div>
       <div style={modifierWrapperStyles}>
         <div>
@@ -49,7 +69,7 @@ const ItemDetails: React.FC = () => {
           <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
         </div>
 
-        <input checked={true} style={checkboxStyles} type="checkbox" />
+        <input style={checkboxStyles} type="checkbox" />
       </div>
       <div style={modifierWrapperStyles}>
         <div>
@@ -57,7 +77,7 @@ const ItemDetails: React.FC = () => {
           <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
         </div>
 
-        <input checked={true} style={checkboxStyles} type="checkbox" />
+        <input style={checkboxStyles} type="checkbox" />
       </div>
 
       <AddToOrder />

@@ -18,6 +18,7 @@ import Popover from "@components/pop-over";
 import ItemDetails from "@pages/item-details";
 import Basket from "@pages/basket";
 import { useData } from "@contexts/restaurant";
+import { useBasket } from "@contexts/basket";
 
 const imgsFallback = [
   "/src/assets/burguerOption.png",
@@ -29,6 +30,7 @@ const OnlineMenu: React.FC = () => {
   const [isPopoverOpen, setIsPropoverOpen] = useState(false);
   const { isSmall } = useResponsiveness();
   const [{ restaurant, menu }] = useData();
+  const { state, dispatch } = useBasket();
 
   const isLoading = restaurant === null || menu === null;
 
@@ -58,9 +60,6 @@ const OnlineMenu: React.FC = () => {
 
   return (
     <>
-      <Popover isOpen={isPopoverOpen} onClose={() => setIsPropoverOpen(false)}>
-        <ItemDetails />
-      </Popover>
       {renderNavBar()}
       <MainLayout isLoading={isLoading}>
         {!isLoading && renderInputSearch()}
@@ -73,14 +72,26 @@ const OnlineMenu: React.FC = () => {
                 return (
                   <Collapser category={section.name} id={`${section.name}-key`}>
                     {section.items.map((item) => (
-                      <MenuOption
-                        title={item.name}
-                        description={item.description}
-                        price={item.price}
-                        imgSrc={item?.images?.find(() => true)?.image}
-                        isPopoverOpen={isPopoverOpen}
-                        onClick={() => setIsPropoverOpen(true)}
-                      />
+                      <>
+                        <MenuOption
+                          title={item.name}
+                          description={item.description}
+                          price={item.price}
+                          imgSrc={item?.images?.find(() => true)?.image}
+                          isPopoverOpen={isPopoverOpen}
+                          onClick={() => {
+                            console.log({ item });
+                            dispatch({ type: "ADD_ITEM", item });
+                            setIsPropoverOpen(true);
+                          }}
+                        />
+                        <Popover
+                          isOpen={isPopoverOpen}
+                          onClose={() => setIsPropoverOpen(false)}
+                        >
+                          <ItemDetails item={item} />
+                        </Popover>
+                      </>
                     ))}
                   </Collapser>
                 );

@@ -1,8 +1,21 @@
 import React, { ReactNode, createContext, useContext, useReducer } from "react";
+interface Image {
+  id: number;
+  image: string;
+}
+
 interface BasketItem {
   id: number;
   name: string;
+  description: string;
+  alcoholic: number;
   price: number;
+  position: number;
+  visible: number;
+  availabilityType: string;
+  available: boolean;
+  sku: string;
+  images: Image[];
   quantity: number;
 }
 

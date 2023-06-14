@@ -1,3 +1,4 @@
+import { useBasket } from "@contexts/basket";
 import {
   barketLabelStyle,
   basketInfosrapperStyles,
@@ -21,36 +22,50 @@ import {
 import { Button, IconButton } from "@components";
 
 const Basket: React.FC = () => {
+  const { state, dispatch } = useBasket();
+  const isLoading = state.items === undefined;
+
+  const renderBasketItems = () => {
+    return (
+      !isLoading &&
+      state.items.map((item) => {
+        return (
+          <div style={basketItemWrapperStyles}>
+            <div style={basketInfosrapperStyles}>
+              <h3 style={basketItemTitleStyles}>Caipirinha</h3>
+              <span style={itemPriceStyles}>R$ 13,00</span>
+            </div>
+            <div style={basketSubInfosWrapperStyles}>
+              <h3 style={basketSubInfosStyles}>Com 10 limões</h3>
+            </div>
+            <div style={quantityControllerStyles}>
+              <IconButton
+                position="inherit"
+                icon="remove"
+                size={20}
+                color="white"
+                backgroundColor="#4F372F"
+              />
+              <span style={quantityCounterStyles}>1</span>
+              <IconButton
+                position="inherit"
+                icon="add"
+                size={20}
+                color="white"
+                backgroundColor="#4F372F"
+              />
+            </div>
+          </div>
+        );
+      })
+    );
+  };
+
   return (
     <div style={wrapperStyles}>
       <h2 style={barketLabelStyle}>Carrinho</h2>
       {/* Items */}
-      <div style={basketItemWrapperStyles}>
-        <div style={basketInfosrapperStyles}>
-          <h3 style={basketItemTitleStyles}>Caipirinha</h3>
-          <span style={itemPriceStyles}>R$ 13,00</span>
-        </div>
-        <div style={basketSubInfosWrapperStyles}>
-          <h3 style={basketSubInfosStyles}>Com 10 limões</h3>
-        </div>
-        <div style={quantityControllerStyles}>
-          <IconButton
-            position="inherit"
-            icon="remove"
-            size={20}
-            color="white"
-            backgroundColor="#4F372F"
-          />
-          <span style={quantityCounterStyles}>1</span>
-          <IconButton
-            position="inherit"
-            icon="add"
-            size={20}
-            color="white"
-            backgroundColor="#4F372F"
-          />
-        </div>
-      </div>
+      {renderBasketItems()}
 
       {/* Sub total */}
       <div style={subTotalWrapperStyles}>

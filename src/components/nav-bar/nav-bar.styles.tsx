@@ -1,6 +1,6 @@
 import { defaultTheme } from "@theme";
 
-export const navStyles = {
+export const navStyles: React.CSSProperties = {
   backgroundColor: defaultTheme.colors.primary,
   display: "flex",
   justifyContent: "center",
@@ -8,7 +8,7 @@ export const navStyles = {
   flexDirection: "column",
 };
 
-export const ulStyles = {
+export const ulStyles: React.CSSProperties = {
   display: "flex",
   justifyContent: "center",
   margin: 0,
@@ -16,18 +16,18 @@ export const ulStyles = {
   height: "52px",
 };
 
-export const liStyles = {
+export const liStyles: React.CSSProperties = {
   margin: 0,
   listStyle: "none",
   width: "232px",
 };
 
-export const liSelectedStyles = {
+export const liSelectedStyles: React.CSSProperties = {
   ...liStyles,
   borderBottom: "5px solid white",
 };
 
-export const aStyles = {
+export const aStyles: React.CSSProperties = {
   display: "flex",
   fontFamily: defaultTheme.typography.fontFamily,
   fontWeight: defaultTheme.typography.fontWeight.bold,
@@ -37,13 +37,13 @@ export const aStyles = {
   alignItems: "center",
 };
 
-export const headerStyles = {
+export const headerStyles: React.CSSProperties = {
   position: "relative",
   width: "100%",
   height: "150px",
 };
 
-export const imgStyles = {
+export const imgStyles: React.CSSProperties = {
   position: "absolute",
   top: 0,
   left: 0,
@@ -54,16 +54,19 @@ export const imgStyles = {
 
 // Mobile
 
-export const mobileWrapperStyles = {
+export const mobileWrapperStyles: React.CSSProperties = {
   justifyContent: "center",
   display: "flex",
   alignContent: "center",
   alignItems: "center",
 };
 
-export const borderWrapperStyles = { ...mobileWrapperStyles, width: "10%" };
+export const borderWrapperStyles: React.CSSProperties = {
+  ...mobileWrapperStyles,
+  width: "10%",
+};
 
-export const centralWrapperStyles = {
+export const centralWrapperStyles: React.CSSProperties = {
   ...mobileWrapperStyles,
   color: "white",
   fontFamily: defaultTheme.typography.fontFamily,
@@ -72,6 +75,12 @@ export const centralWrapperStyles = {
   fontSize: "18px",
 };
 
-export const iconStyles = { color: "white", cursor: "pointer" };
+export const iconStyles: React.CSSProperties = {
+  color: "white",
+  cursor: "pointer",
+};
 
-export const mobileStyles = { display: "flex", width: "100%" };
+export const mobileStyles: React.CSSProperties = {
+  display: "flex",
+  width: "100%",
+};

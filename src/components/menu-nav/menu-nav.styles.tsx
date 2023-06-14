@@ -1,11 +1,11 @@
 import { defaultTheme } from "@theme";
 
-export const menuNavStyles = {
+export const menuNavStyles: React.CSSProperties = {
   display: "flex",
   minWidth: "500px",
 };
 
-export const menuItemStyles = {
+export const menuItemStyles: React.CSSProperties = {
   display: "flex",
   width: "106px",
   justifyContent: "center",
@@ -16,12 +16,12 @@ export const menuItemStyles = {
   borderBottom: "3px solid transparent",
 };
 
-export const menuItemSelectedStyles = {
+export const menuItemSelectedStyles: React.CSSProperties = {
   ...menuItemStyles,
   borderBottom: "3px solid #4F372F",
 };
 
-export const menuItemLabelStyles = {
+export const menuItemLabelStyles: React.CSSProperties = {
   display: "flex",
   width: "100%",
   justifyContent: " center",
@@ -29,12 +29,12 @@ export const menuItemLabelStyles = {
   padding: "30px 0 16px 0",
 };
 
-export const imageStyles = {
+export const imageStyles: React.CSSProperties = {
   borderRadius: "100%",
   border: "3px solid white",
 };
 
-export const imageSelectedStyles = {
+export const imageSelectedStyles: React.CSSProperties = {
   borderRadius: "100%",
   border: "3px solid #4F372F",
 };

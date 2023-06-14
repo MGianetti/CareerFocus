@@ -1,12 +1,12 @@
 import { defaultTheme } from "@theme";
 
-export const menuOptionWrapperStyles = {
+export const menuOptionWrapperStyles: React.CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
   margin: "24px 0",
 };
 
-export const optionsDescriptionStyles = {
+export const optionsDescriptionStyles: React.CSSProperties = {
   color: "#464646",
   display: "flex",
   flexDirection: "column",
@@ -14,17 +14,17 @@ export const optionsDescriptionStyles = {
   fontSize: "16px",
 };
 
-export const titleStyles = {
+export const titleStyles: React.CSSProperties = {
   fontSize: "16px",
   color: "#121212",
   margin: 0,
 };
 
-export const imgStyles = {
+export const imgStyles: React.CSSProperties = {
   objectFit: "cover",
 };
 
-export const imageWrapperStyles = {
+export const imageWrapperStyles: React.CSSProperties = {
   borderRadius: "4px",
   display: "flex",
   height: "85px",
@@ -33,7 +33,7 @@ export const imageWrapperStyles = {
   width: "128px",
 };
 
-export const badgeTitleStyles = {
+export const badgeTitleStyles: React.CSSProperties = {
   fontFamily: "Roboto",
   fontSize: "14px",
   display: "flex",

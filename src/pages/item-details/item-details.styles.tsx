@@ -1,31 +1,34 @@
 import { defaultTheme } from "@theme";
 
-export const wrapperStyles = { display: "flex", flexDirection: "column" };
-export const imgStyles = { objectFit: "cover" };
+export const wrapperStyles: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+};
+export const imgStyles: React.CSSProperties = { objectFit: "cover" };
 
-export const detailsWraperStyles = {
+export const detailsWraperStyles: React.CSSProperties = {
   padding: "16px",
   fontFamily: "Roboto",
   color: "#464646",
 };
 
-export const subDetailsWrapperStyles = {
+export const subDetailsWrapperStyles: React.CSSProperties = {
   ...detailsWraperStyles,
   backgroundColor: "#F8F9FA",
 };
 
-export const headingStyles = {
+export const headingStyles: React.CSSProperties = {
   fontSize: "24px",
   fontWeight: 700,
   margin: "0 0 8px 0",
   color: "#121212",
 };
 
-export const headingParagraphStyles = {
+export const headingParagraphStyles: React.CSSProperties = {
   margin: 0,
 };
 
-export const subHeadingStyles = {
+export const subHeadingStyles: React.CSSProperties = {
   fontSize: "16px",
   fontWeight: 700,
   margin: "0 0 8px 0",
@@ -33,21 +36,21 @@ export const subHeadingStyles = {
   marginBottom: 0,
 };
 
-export const subHeadingParagraphStyles = {
+export const subHeadingParagraphStyles: React.CSSProperties = {
   fontSize: "16px",
   fontWeight: 300,
   color: "#5F5F5F",
   margin: 0,
 };
 
-export const modifierWrapperStyles = {
+export const modifierWrapperStyles: React.CSSProperties = {
   display: "flex",
   justifyItems: "center",
   justifyContent: " space-between",
   padding: "16px",
 };
 
-export const modifierHeadingStyles = {
+export const modifierHeadingStyles: React.CSSProperties = {
   margin: 0,
   fontSize: "16px",
   fontWeight: 500,
@@ -55,14 +58,14 @@ export const modifierHeadingStyles = {
   color: "#121212",
 };
 
-export const modifierParagraphStyles = {
+export const modifierParagraphStyles: React.CSSProperties = {
   margin: 0,
   fontWeight: 400,
   color: "#464646",
   fontFamily: "Roboto",
 };
 
-export const checkboxStyles = {
+export const checkboxStyles: React.CSSProperties = {
   width: "20px",
   height: "20px",
   backgroundcolor: "white",

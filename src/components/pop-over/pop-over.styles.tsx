@@ -1,4 +1,4 @@
-export const contentWrapperStyles = {
+export const contentWrapperStyles: React.CSSProperties = {
   backgroundColor: "rgba(0, 0, 0, 0.65)",
   display: "flex",
   height: "100%",
@@ -8,7 +8,7 @@ export const contentWrapperStyles = {
   width: "100%",
 };
 
-export const contentStyles = {
+export const contentStyles: React.CSSProperties = {
   backgroundColor: "white",
   height: "720px",
   left: "calc(50% - 240px)",
@@ -18,13 +18,13 @@ export const contentStyles = {
   width: "480px ",
 };
 
-export const closeStyles = {
+export const closeStyles: React.CSSProperties = {
   display: "flex",
   justifyContent: "end",
   width: " 100%",
 };
 
-export const contentSmStyles = {
+export const contentSmStyles: React.CSSProperties = {
   backgroundColor: "white",
   height: "100%",
   position: "fixed",

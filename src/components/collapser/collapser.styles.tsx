@@ -1,26 +1,27 @@
 import { defaultTheme } from "@theme";
 
-export const collapserStyles = {
+export const collapserStyles: React.CSSProperties = {
   display: "flex",
   width: "100%",
   flexDirection: "column",
   justifyContent: "space-between",
+  cursor: "pointer",
 };
 
-export const buttonStyles = {
+export const buttonStyles: React.CSSProperties = {
   background: "transparent",
   border: "none",
   color: "#4F372F",
 };
 
-export const categoryStyles = {
+export const categoryStyles: React.CSSProperties = {
   fontSize: "24px",
   fontFamily: "Roboto",
   fontWeight: 500,
   color: "#121212",
 };
 
-export const collapsingRowStyles = {
+export const collapsingRowStyles: React.CSSProperties = {
   display: "flex",
   justifyContent: "inherit",
 };

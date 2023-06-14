@@ -1,6 +1,6 @@
 import { defaultTheme } from "@theme";
 
-export const wrapperStyles = {
+export const wrapperStyles: React.CSSProperties = {
   position: "relative",
   display: "flex",
   alignContent: "center",
@@ -10,18 +10,18 @@ export const wrapperStyles = {
   marginLeft: "-20px",
 };
 
-export const wrapperSmStyles = {
+export const wrapperSmStyles: React.CSSProperties = {
   ...wrapperStyles,
   padding: "0 30px",
 };
 
-export const searchIconStyles = {
+export const searchIconStyles: React.CSSProperties = {
   color: "#DADADA",
   position: "relative",
   left: "34px",
 };
 
-export const inputSearchStyles = {
+export const inputSearchStyles: React.CSSProperties = {
   width: "100%",
   border: "0.911806px solid #8A94A4",
   borderRadius: "7.29444px",

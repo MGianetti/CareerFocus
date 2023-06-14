@@ -20,7 +20,7 @@ const Collapser: FC<CollapserProps> = (props) => {
     <div style={collapserStyles} onClick={() => setIsOpen(!isOpen)} key={id}>
       <div style={collapsingRowStyles}>
         <h2 style={categoryStyles}>{category}</h2>
-        <button style={buttonStyles} onClick={() => setIsOpen(!isOpen)}>
+        <button style={buttonStyles}>
           <ChevronIcon isOpen={isOpen} />
         </button>
       </div>

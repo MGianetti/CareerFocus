@@ -16,7 +16,7 @@ const InputSearch: React.FC<Props> = (props) => {
   const { isSmall } = useResponsiveness();
   const { placeholder } = props;
   return (
-    <div style={isSmall ? wrapperSmStyles : wrapperSmStyles}>
+    <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
       <SearchIcon style={searchIconStyles} />
       <input placeholder={placeholder} style={inputSearchStyles} />
     </div>

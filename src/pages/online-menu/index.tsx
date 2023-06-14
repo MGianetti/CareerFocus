@@ -79,10 +79,11 @@ const OnlineMenu: React.FC = () => {
                           price={item.price}
                           imgSrc={item?.images?.find(() => true)?.image}
                           isPopoverOpen={isPopoverOpen}
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             console.log({ item });
                             dispatch({ type: "ADD_ITEM", item });
-                            setIsPropoverOpen(true);
+                            // setIsPropoverOpen(true);
                           }}
                         />
                         <Popover

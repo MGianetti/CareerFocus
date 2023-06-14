@@ -16,7 +16,7 @@ interface Props {
   price: number;
   imgSrc: string | undefined;
   isPopoverOpen: boolean;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const MenuOption: React.FC<Props> = (props) => {
@@ -24,7 +24,7 @@ const MenuOption: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div style={menuOptionWrapperStyles} onClick={onClick}>
+      <div style={menuOptionWrapperStyles} onClick={(e) => onClick(e)}>
         <div style={optionsDescriptionStyles}>
           <div style={badgeTitleStyles}>
             {/* TODO Sync badge with context */}

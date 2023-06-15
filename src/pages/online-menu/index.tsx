@@ -29,6 +29,10 @@ const imgsFallback = [
 
 const OnlineMenu: React.FC = () => {
   const [isPopoverOpen, setIsPropoverOpen] = useState(false);
+
+  const [popoverContent, setPopoverContent] = useState<JSX.Element | null>(
+    null
+  );
   const { isSmall } = useResponsiveness();
   const [{ restaurant, menu }] = useData();
   const { state, dispatch } = useBasket();
@@ -57,8 +61,6 @@ const OnlineMenu: React.FC = () => {
     return <MenuNav options={sectionsMenu} />;
   };
 
-  console.log(menu?.sections[0].items);
-
   return (
     <>
       {renderNavBar()}
@@ -68,31 +70,29 @@ const OnlineMenu: React.FC = () => {
         <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
           <div style={isSmall ? menuNavWrapperSmStyles : menuNavWrapperStyles}>
             {!isLoading && renderMenuNav()}
+            <Popover
+              isOpen={isPopoverOpen}
+              onClose={() => setIsPropoverOpen(false)}
+            >
+              {popoverContent}
+            </Popover>
             {!isLoading &&
               menu?.sections.map((section) => {
                 return (
                   <Collapser category={section.name} id={`${section.name}-key`}>
                     {section.items.map((item) => (
-                      <>
-                        <MenuOption
-                          title={item.name}
-                          description={item.description}
-                          price={item.price}
-                          imgSrc={item?.images?.find(() => true)?.image}
-                          isPopoverOpen={isPopoverOpen}
-                          onClick={(e) => {
-                            console.log({ item });
-                            dispatch({ type: "ADD_ITEM", item });
-                            // setIsPropoverOpen(true);
-                          }}
-                        />
-                        <Popover
-                          isOpen={isPopoverOpen}
-                          onClose={() => setIsPropoverOpen(false)}
-                        >
-                          <ItemDetails item={item} />
-                        </Popover>
-                      </>
+                      <MenuOption
+                        title={item.name}
+                        description={item.description}
+                        price={item.price}
+                        imgSrc={item?.images?.find(() => true)?.image}
+                        isPopoverOpen={isPopoverOpen}
+                        onClick={(e) => {
+                          dispatch({ type: "ADD_ITEM", item });
+                          setIsPropoverOpen(true);
+                          setPopoverContent(<ItemDetails item={item} />);
+                        }}
+                      />
                     ))}
                   </Collapser>
                 );

@@ -26,7 +26,11 @@ const MenuOption: React.FC<Props> = (props) => {
   const { isSmall } = useResponsiveness();
   return (
     <>
-      <div style={menuOptionWrapperStyles} onClick={(e) => onClick(e)}>
+      <div
+        style={menuOptionWrapperStyles}
+        onClick={(e) => onClick(e)}
+        key={`${title}-key`}
+      >
         <div style={optionsDescriptionStyles}>
           <div style={badgeTitleStyles}>
             {/* TODO Sync badge with context */}

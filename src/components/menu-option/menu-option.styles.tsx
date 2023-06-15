@@ -51,3 +51,8 @@ export const descriptionSmStyles: React.CSSProperties = {
   background: "#fff",
   textOverflow: "ellipsis",
 };
+
+export const descriptionXsmStyles: React.CSSProperties = {
+  ...descriptionSmStyles,
+  maxWidth: "200px",
+};

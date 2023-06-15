@@ -26,6 +26,8 @@ const Basket: React.FC = () => {
   const { state, dispatch, getItemQuantity, getTotalOrderValue } = useBasket();
   const isLoading = state.items === undefined;
 
+  const getPrice = () => parseFloat(`${getTotalOrderValue()}`).toFixed(2);
+
   const renderBasketItems = () => {
     return (
       !isLoading &&
@@ -80,15 +82,13 @@ const Basket: React.FC = () => {
       {/* Sub total */}
       <div style={subTotalWrapperStyles}>
         <h2 style={subTotalLabelWrapperStyles}>Sub total</h2>
-        <span style={subTotalPriceWrapperStyles}>
-          R$ {`${getTotalOrderValue()}`}
-        </span>
+        <span style={subTotalPriceWrapperStyles}>R$ {`${getPrice()}`}</span>
       </div>
 
       {/* Total */}
       <div style={totalWrapperStyles}>
         <h2 style={totalLabelWrapperStyles}>Total:</h2>
-        <span style={totalPriceLabelStyles}>R$ {getTotalOrderValue()}</span>
+        <span style={totalPriceLabelStyles}>R$ {getPrice()}</span>
       </div>
 
       {/* Checkout */}

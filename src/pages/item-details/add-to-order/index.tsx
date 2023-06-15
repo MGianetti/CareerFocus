@@ -13,18 +13,16 @@ import { useBasket } from "@contexts/basket";
 interface AddToCartProps {
   price?: number;
   quantityToAdd?: number;
-  isPopOverClosed: boolean;
+  isPopOverClosed?: boolean;
   onClickAddToOrder?: () => void;
-  onClickYourBasket: () => void;
-  handleQuantityChange: (
-    quantityToAdd: number
-  ) => Dispatch<SetStateAction<number>>;
+  onClickYourBasket?: () => void;
+  handleQuantityChange: Dispatch<SetStateAction<number>>;
 }
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const {
-    price,
-    quantityToAdd,
+    price = 0,
+    quantityToAdd = 0,
     onClickAddToOrder,
     onClickYourBasket,
     handleQuantityChange,
@@ -37,6 +35,8 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
 
   const normalizedQuantityToDecrease =
     quantityToAdd - 1 > 1 ? quantityToAdd - 1 : 1;
+
+  const getPrice = () => parseFloat(`${price * quantityToAdd}`).toFixed(2);
 
   const decreaseQuantity = () =>
     handleQuantityChange(normalizedQuantityToDecrease);
@@ -96,7 +96,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
           <span
             style={addToOrderButtonStyles}
             onClick={onClickAddToOrder}
-          >{`Add to order • ${`R$ ${price * quantityToAdd}`}`}</span>
+          >{`Add to order • ${`R$ ${getPrice()}`}`}</span>
         )}
       </Button>
     </div>

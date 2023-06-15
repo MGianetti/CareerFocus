@@ -62,9 +62,13 @@ const OnlineMenu: React.FC = () => {
   };
 
   const handleMenuOptionClick = (item: ItemDetailsProp) => () => {
-    dispatch({ type: "ADD_ITEM", item });
     setIsPopoverOpen(true);
-    setPopoverContent(<ItemDetails item={item} />);
+    setPopoverContent(
+      <ItemDetails
+        item={item}
+        onAddToBasket={() => dispatch({ type: "ADD_ITEM", item })}
+      />
+    );
   };
 
   return (

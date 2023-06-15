@@ -7,10 +7,11 @@ import {
 
 interface AddToCartProps {
   price: number;
+  onClick: () => void;
 }
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
-  const { price } = props;
+  const { price, onClick } = props;
 
   return (
     <div style={wrapperStyles}>
@@ -48,6 +49,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
             letterSpacing: "0.75px",
             fontWeight: "500",
           }}
+          onClick={onClick}
         >{`Add to order • ${`R$ ${price}`}`}</span>
       </Button>
     </div>

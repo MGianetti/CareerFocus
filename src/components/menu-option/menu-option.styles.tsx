@@ -43,10 +43,7 @@ export const badgeTitleStyles: React.CSSProperties = {
 export const descriptionStyles: React.CSSProperties = { maxWidth: "390px" };
 export const descriptionSmStyles: React.CSSProperties = {
   height: "37px",
-  width: "191px",
-  overflow: "hidden",
-  display: "inline-block",
-  width: "177px",
+  maxWidth: "500px",
   overflow: "hidden",
   display: "-webkit-box",
   WebkitLineClamp: "2",

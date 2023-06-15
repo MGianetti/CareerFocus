@@ -19,7 +19,7 @@ interface BasketItem {
   quantity: number;
 }
 
-type Action =
+export type Action =
   | { type: "ADD_ITEM"; item: BasketItem }
   | { type: "REMOVE_ITEM"; itemId: number }
   | { type: "UPDATE_ITEM"; itemId: number; quantity: number }

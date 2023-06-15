@@ -1,3 +1,4 @@
+import { Action } from "@contexts/basket";
 import AddToOrder from "./add-to-order";
 import {
   detailsWraperStyles,
@@ -59,10 +60,11 @@ export interface ItemDetailsProp {
 
 interface ItemDetailsProps {
   item: ItemDetailsProp;
+  onAddToBasket: () => void;
 }
 
 const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
-  const { item } = props;
+  const { item, onAddToBasket } = props;
 
   const hasItemModifiers = item.modifiers ?? false;
 
@@ -100,7 +102,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
       </div>
       {hasItemModifiers && renderModifierHeader()}
       {/* {hasItemModifiers && } */}
-      <AddToOrder price={item.price} />
+      <AddToOrder price={item.price} onClick={onAddToBasket} />
     </div>
   );
 };

@@ -18,14 +18,14 @@ type PopoverContentProps = {
 const PopoverContent: React.FC<PopoverContentProps> = (props) => {
   const { onClose, children } = props;
 
-  const { isExtraSmall } = useResponsiveness();
+  const { isSmall } = useResponsiveness();
   useEscapeKey(onClose);
 
   return (
     <>
       <div style={contentWrapperStyles} onClick={onClose} />
 
-      <div style={isExtraSmall ? contentSmStyles : contentStyles}>
+      <div style={isSmall ? contentSmStyles : contentStyles}>
         <div style={closeStyles} onClick={(e) => e.stopPropagation()}>
           <IconButton
             icon="close"

@@ -27,7 +27,7 @@ interface Props {
 const NavBar: React.FC<Props> = (props) => {
   const { options } = props;
 
-  const { isExtraSmall } = useResponsiveness();
+  const { isSmall } = useResponsiveness();
   const [{ restaurant }] = useData();
   const [selectedOption, setSelectedOption] = useState(0);
 
@@ -69,8 +69,8 @@ const NavBar: React.FC<Props> = (props) => {
   return (
     <nav style={navStyles}>
       <ul style={ulStyles}>
-        {!isExtraSmall && renderOptionsForPc()}
-        {isExtraSmall && renderOptionsForMobile()}
+        {!isSmall && renderOptionsForPc()}
+        {isSmall && renderOptionsForMobile()}
       </ul>
 
       <header style={headerStyles}>

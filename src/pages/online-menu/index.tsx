@@ -62,7 +62,12 @@ const OnlineMenu: React.FC = () => {
   const handleMenuOptionClick = (item: ItemDetailsProp) => () => {
     setIsPopoverOpen(true);
 
-    setPopoverContent(<ItemDetails item={item} />);
+    setPopoverContent(
+      <ItemDetails
+        item={item}
+        closeAfterPopoverAdding={() => setIsPopoverOpen(false)}
+      />
+    );
   };
 
   return (

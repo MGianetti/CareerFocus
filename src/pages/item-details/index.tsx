@@ -61,10 +61,11 @@ export interface ItemDetailsProp {
 
 interface ItemDetailsProps {
   item: ItemDetailsProp;
+  closeAfterPopoverAdding: () => void;
 }
 
 const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
-  const { item } = props;
+  const { item, closeAfterPopoverAdding } = props;
   const [quantityToAdd, setQuantityToAdd] = useState(1);
   const { dispatch } = useBasket();
 
@@ -99,21 +100,25 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
   return (
     <div style={wrapperStyles} key={item.name}>
       {hasImgSrc && <img style={imgStyles} src={normalizedImgSrc} />}
+
       <div style={detailsWraperStyles}>
         <h1 style={headingStyles}>{item.name}</h1>
         <p style={headingParagraphStyles}>{item.description}</p>
       </div>
+
       {hasItemModifiers && renderModifierHeader()}
       {hasItemModifiers && renderModifier()}
+
       <AddToOrder
         price={item.price}
         handleQuantityChange={setQuantityToAdd}
-        onClick={() =>
+        onClick={() => {
           dispatch({
             type: "ADD_ITEM",
             item: { ...item, quantity: quantityToAdd },
-          })
-        }
+          });
+          closeAfterPopoverAdding();
+        }}
         quantityToAdd={quantityToAdd}
       />
     </div>

@@ -60,7 +60,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
         <span
           style={addToOrderButtonStyles}
           onClick={onClick}
-        >{`Add to order • ${`R$ ${price}`}`}</span>
+        >{`Add to order • ${`R$ ${price * quantityToAdd}`}`}</span>
       </Button>
     </div>
   );

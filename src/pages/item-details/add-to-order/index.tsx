@@ -34,7 +34,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const increaseQuantity = () => handleQuantityChange(quantityToAdd + 1);
 
   const normalizedQuantityToDecrease =
-    quantityToAdd - 1 > 0 ? quantityToAdd - 1 : 0;
+    quantityToAdd - 1 > 1 ? quantityToAdd - 1 : 1;
 
   const decreaseQuantity = () =>
     handleQuantityChange(normalizedQuantityToDecrease);

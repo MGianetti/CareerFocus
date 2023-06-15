@@ -1,4 +1,4 @@
-import { Action } from "@contexts/basket";
+import { Action, useBasket } from "@contexts/basket";
 import AddToOrder from "./add-to-order";
 import {
   detailsWraperStyles,
@@ -61,25 +61,26 @@ export interface ItemDetailsProp {
 
 interface ItemDetailsProps {
   item: ItemDetailsProp;
-  onAddToBasket: (items: ItemDetailsProp) => void;
 }
 
 const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
-  const { item, onAddToBasket } = props;
-  const [quantityToAdd, setQuantityToAdd] = useState({ ...item, quantity: 1 });
+  const { item } = props;
+  const [quantityToAdd, setQuantityToAdd] = useState(1);
+  const { dispatch } = useBasket();
 
   const hasItemModifiers = item.modifiers ?? false;
 
-  const renderModifier = () => (
-    <div style={modifierWrapperStyles}>
-      <div>
-        <h1 style={modifierHeadingStyles}>Smash</h1>
-        <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
-      </div>
+  const renderModifier = () =>
+    item?.modifiers.map((modifier) => (
+      <div style={modifierWrapperStyles}>
+        <div>
+          <h1 style={modifierHeadingStyles}>Smash</h1>
+          <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
+        </div>
 
-      <input style={checkboxStyles} type="checkbox" />
-    </div>
-  );
+        <input style={checkboxStyles} type="checkbox" />
+      </div>
+    ));
 
   const renderModifierHeader = () => (
     <div style={subDetailsWrapperStyles}>
@@ -103,19 +104,17 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
         <p style={headingParagraphStyles}>{item.description}</p>
       </div>
       {hasItemModifiers && renderModifierHeader()}
-      {/* {hasItemModifiers && } */}
+      {hasItemModifiers && renderModifier()}
       <AddToOrder
         price={item.price}
-        onClick={onAddToBasket(quantityToAdd)}
-        addToOrder={() =>
-          setQuantityToAdd({ ...item, quantity: item.quantity + 1 })
-        }
-        removeFromOrder={() =>
-          setQuantityToAdd({
-            ...item,
-            quantity: item.quantity > 0 ? item.quantity - 1 : 0,
+        handleQuantityChange={setQuantityToAdd}
+        onClick={() =>
+          dispatch({
+            type: "ADD_ITEM",
+            item: { ...item, quantity: quantityToAdd },
           })
         }
+        quantityToAdd={quantityToAdd}
       />
     </div>
   );

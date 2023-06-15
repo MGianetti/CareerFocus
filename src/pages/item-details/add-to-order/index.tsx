@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { Button, IconButton } from "@components";
 import {
   addToOrderButtonStyles,
@@ -10,12 +11,21 @@ interface AddToCartProps {
   price: number;
   quantityToAdd: number;
   onClick: () => void;
-  addToOrder: () => void;
-  removeFromOrder: () => void;
+  handleQuantityChange: (
+    quantityToAdd: number
+  ) => Dispatch<SetStateAction<number>>;
 }
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
-  const { price, quantityToAdd, onClick, addToOrder, removeFromOrder } = props;
+  const { price, quantityToAdd, onClick, handleQuantityChange } = props;
+
+  const increaseQuantity = () => handleQuantityChange(quantityToAdd + 1);
+
+  const normalizedQuantityToDecrease =
+    quantityToAdd - 1 > 0 ? quantityToAdd - 1 : 0;
+
+  const decreaseQuantity = () =>
+    handleQuantityChange(normalizedQuantityToDecrease);
 
   return (
     <div style={wrapperStyles}>
@@ -26,7 +36,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
           size={32}
           color="#5F5F5F"
           backgroundColor="#DADADA"
-          onClick={addToOrder}
+          onClick={decreaseQuantity}
         />
         <span style={quantityCounterStyles}>{quantityToAdd}</span>
         <IconButton
@@ -35,7 +45,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
           size={32}
           color="white"
           backgroundColor="#4F372F"
-          onClick={removeFromOrder}
+          onClick={increaseQuantity}
         />
       </div>
 
@@ -49,7 +59,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
       >
         <span
           style={addToOrderButtonStyles}
-          onClick={() => onClick(quantityToAdd)}
+          onClick={onClick}
         >{`Add to order • ${`R$ ${price}`}`}</span>
       </Button>
     </div>

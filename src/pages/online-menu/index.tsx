@@ -19,7 +19,6 @@ import Popover from "@components/pop-over";
 import ItemDetails, { ItemDetailsProp } from "@pages/item-details";
 import Basket from "@pages/basket";
 import { useData } from "@contexts/restaurant";
-import { useBasket } from "@contexts/basket";
 
 const imgsFallback = [
   "/src/assets/burguerOption.png",
@@ -35,7 +34,6 @@ const OnlineMenu: React.FC = () => {
   );
   const { isSmall } = useResponsiveness();
   const [{ restaurant, menu }] = useData();
-  const { state, dispatch } = useBasket();
 
   const isLoading = restaurant === null || menu === null;
 
@@ -64,12 +62,7 @@ const OnlineMenu: React.FC = () => {
   const handleMenuOptionClick = (item: ItemDetailsProp) => () => {
     setIsPopoverOpen(true);
 
-    setPopoverContent(
-      <ItemDetails
-        item={item}
-        onAddToBasket={() => dispatch({ type: "ADD_ITEM", item })}
-      />
-    );
+    setPopoverContent(<ItemDetails item={item} />);
   };
 
   return (

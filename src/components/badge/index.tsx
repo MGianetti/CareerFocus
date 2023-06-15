@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-
 import { badgeStyles } from "./badge.styles";
 
 interface Props {

@@ -1,16 +1,22 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import Badge from ".";
+import { render, cleanup } from "@testing-library/react";
+
+import Badge from "./";
+
+afterEach(cleanup);
 
 describe("Badge", () => {
-  beforeEach(() => {
-    render(<Badge>Hello Jest</Badge>);
+  test("renders with default background color", () => {
+    const { getByText } = render(<Badge>Test</Badge>);
+    const badgeElement = getByText("Test");
+
+    expect(badgeElement.style.background).toBe("#4F372F");
   });
 
-  it("should render without errors", () => {});
+  test("renders with provided background color", () => {
+    const customColor = "#123456";
+    const { getByText } = render(<Badge background={customColor}>Test</Badge>);
+    const badgeElement = getByText("Test");
 
-  it("should render correctly on the screen", () => {
-    const testContent = "Hello Jest";
-    expect(screen.getByText(testContent)).toBeInTheDocument();
+    expect(badgeElement.style.background).toBe(customColor);
   });
 });

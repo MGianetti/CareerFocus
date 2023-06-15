@@ -1,3 +1,4 @@
+import React from "react";
 import { render, cleanup } from "@testing-library/react";
 
 import Badge from "./";
@@ -9,14 +10,14 @@ describe("Badge", () => {
     const { getByText } = render(<Badge>Test</Badge>);
     const badgeElement = getByText("Test");
 
-    expect(badgeElement.style.background).toBe("#4F372F");
+    expect(badgeElement.style.background).toBe("rgb(79, 55, 47)");
   });
 
   test("renders with provided background color", () => {
-    const customColor = "#123456";
+    const customColor = "rgb(18, 52, 86)";
     const { getByText } = render(<Badge background={customColor}>Test</Badge>);
     const badgeElement = getByText("Test");
 
-    expect(badgeElement.style.background).toBe(customColor);
+    expect(badgeElement.style.backgroundColor).toBe(customColor);
   });
 });

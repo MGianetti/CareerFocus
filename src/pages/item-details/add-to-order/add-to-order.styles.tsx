@@ -17,7 +17,7 @@ export const wrapperSmStyles: React.CSSProperties = {
   ...wrapperStyles,
   width: "100%",
   height: "70px",
-  top: "94%",
+  top: "90%",
 };
 
 export const quantityCounterStyles: React.CSSProperties = {

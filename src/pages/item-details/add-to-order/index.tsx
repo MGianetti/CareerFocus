@@ -13,6 +13,7 @@ import { useBasket } from "@contexts/basket";
 interface AddToCartProps {
   price: number;
   quantityToAdd: number;
+  isPopOverClosed: boolean;
   onClick: () => void;
   handleQuantityChange: (
     quantityToAdd: number
@@ -20,7 +21,13 @@ interface AddToCartProps {
 }
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
-  const { price, quantityToAdd, onClick, handleQuantityChange } = props;
+  const {
+    price,
+    quantityToAdd,
+    onClick,
+    handleQuantityChange,
+    isPopOverClosed,
+  } = props;
   const { isSmall } = useResponsiveness();
   const { getTotalOrderItems } = useBasket();
 
@@ -32,9 +39,23 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const decreaseQuantity = () =>
     handleQuantityChange(normalizedQuantityToDecrease);
 
+  const isSmallAndPopoverOpened = isSmall && !isPopOverClosed;
+  const isSmallAndPopOverClosed = isSmall && isPopOverClosed;
+  const isNotSmallAndPopoverOpened = !isSmall && !isPopOverClosed;
+  const isNotSmallAndPopoverClosed = !isSmall && isPopOverClosed;
+
+  const shouldRenderFooterBasket =
+    isSmallAndPopOverClosed || isNotSmallAndPopoverClosed;
+
+  const shouldUseSmallWrapperStyles =
+    isSmallAndPopoverOpened || isSmallAndPopOverClosed;
+
+  const shouldRenderAddingButtons =
+    isSmallAndPopoverOpened || isNotSmallAndPopoverOpened;
+
   return (
-    <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
-      {!isSmall && (
+    <div style={shouldUseSmallWrapperStyles ? wrapperSmStyles : wrapperStyles}>
+      {shouldRenderAddingButtons && (
         <div style={quantityControllerStyles}>
           <IconButton
             position="inherit"
@@ -64,7 +85,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
         padding={20}
         borderRadius="40px"
       >
-        {isSmall ? (
+        {shouldRenderFooterBasket ? (
           <span
             style={addToOrderButtonStyles}
             onClick={onClick}

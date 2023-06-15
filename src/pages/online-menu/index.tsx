@@ -105,8 +105,8 @@ const OnlineMenu: React.FC = () => {
                 );
               })}
           </div>
-          {isSmall ? (
-            <AddToOrder />
+          {isSmall && !isPopoverOpen ? (
+            <AddToOrder isPopOverClosed={!isPopoverOpen} />
           ) : (
             <div style={basketWrapperStyles}>
               <Basket />

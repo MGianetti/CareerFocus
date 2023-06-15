@@ -11,10 +11,10 @@ import { useResponsiveness } from "@contexts/responsiveness";
 import { useBasket } from "@contexts/basket";
 
 interface AddToCartProps {
-  price: number;
-  quantityToAdd: number;
+  price?: number;
+  quantityToAdd?: number;
   isPopOverClosed: boolean;
-  onClickAddToOrder: () => void;
+  onClickAddToOrder?: () => void;
   onClickYourBasket: () => void;
   handleQuantityChange: (
     quantityToAdd: number

@@ -55,14 +55,6 @@ const OnlineMenu: React.FC = () => {
     />
   );
 
-  const renderInputSearch = () => (
-    <InputSearch placeholder="Search menu items" />
-  );
-
-  const renderMenuNav = () => {
-    return <MenuNav options={sectionsMenu} />;
-  };
-
   const handleMenuOptionClick = (item: ItemDetailsProp) => () => {
     setPopoverContent(
       <ItemDetails
@@ -85,6 +77,67 @@ const OnlineMenu: React.FC = () => {
     }
   }, [isSmall]);
 
+  const renderInputSearch = () => (
+    <InputSearch placeholder="Search menu items" />
+  );
+
+  const renderMenuNav = () => {
+    return <MenuNav options={sectionsMenu} />;
+  };
+
+  const renderMenuOptions = () =>
+    !isLoading &&
+    menu?.sections.map((section, sectionIndex) => {
+      const isLastOption = sectionIndex + 1 === menu.sections?.length;
+      return (
+        <>
+          <Collapser category={section.name} id={`${section.name}-key`}>
+            {section.items.map((item) => {
+              return (
+                <>
+                  <MenuOption
+                    title={item.name}
+                    id={item.id}
+                    description={item.description}
+                    price={item.price}
+                    imgSrc={item?.images?.find(() => true)?.image}
+                    isPopoverOpen={isPopoverOpen}
+                    onClick={handleMenuOptionClick(item as ItemDetailsProp)}
+                  />
+                </>
+              );
+            })}
+          </Collapser>
+          {isLastOption && <div style={lastOptionStyles} />}
+        </>
+      );
+    });
+
+  const renderPopoverWithContent = () => (
+    <Popover
+      isOpen={isPopoverOpen}
+      onClose={() => {
+        setPopoverContent(null);
+        setIsPopoverOpen(false);
+      }}
+    >
+      {popoverContent}
+    </Popover>
+  );
+
+  const renderAddToOrderFooterOnMobile = () => (
+    <AddToOrder
+      isPopOverClosed={!isPopoverOpen}
+      onClickYourBasket={handleMyBasketClick}
+    />
+  );
+
+  const renderBasketOnPc = () => (
+    <div style={basketWrapperStyles}>
+      <Basket />
+    </div>
+  );
+
   return (
     <>
       {renderNavBar()}
@@ -94,53 +147,13 @@ const OnlineMenu: React.FC = () => {
         <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
           <div style={isSmall ? menuNavWrapperSmStyles : menuNavWrapperStyles}>
             {!isLoading && renderMenuNav()}
-            <Popover
-              isOpen={isPopoverOpen}
-              onClose={() => {
-                setPopoverContent(null);
-                setIsPopoverOpen(false);
-              }}
-            >
-              {popoverContent}
-            </Popover>
-            {!isLoading &&
-              menu?.sections.map((section) => {
-                return (
-                  <Collapser category={section.name} id={`${section.name}-key`}>
-                    {section.items.map((item, itemIndex) => {
-                      const isLastOption =
-                        itemIndex + 1 === section.items.length;
-                      return (
-                        <>
-                          <MenuOption
-                            title={item.name}
-                            id={item.id}
-                            description={item.description}
-                            price={item.price}
-                            imgSrc={item?.images?.find(() => true)?.image}
-                            isPopoverOpen={isPopoverOpen}
-                            onClick={handleMenuOptionClick(
-                              item as ItemDetailsProp
-                            )}
-                          />
-                          {isLastOption && <div style={lastOptionStyles} />}
-                        </>
-                      );
-                    })}
-                  </Collapser>
-                );
-              })}
+            {renderPopoverWithContent()}
+            {renderMenuOptions()}
           </div>
-          {isSmall && !isPopoverOpen ? (
-            <AddToOrder
-              isPopOverClosed={!isPopoverOpen}
-              onClickYourBasket={handleMyBasketClick}
-            />
-          ) : (
-            <div style={basketWrapperStyles}>
-              <Basket />
-            </div>
-          )}
+
+          {isSmall && !isPopoverOpen
+            ? renderAddToOrderFooterOnMobile()
+            : renderBasketOnPc()}
         </div>
       </MainLayout>
     </>

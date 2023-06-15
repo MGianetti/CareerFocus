@@ -5,7 +5,13 @@ import {
   wrapperStyles,
 } from "./add-to-order.styles";
 
-const AddToOrder: React.FC = () => {
+interface AddToCartProps {
+  price: number;
+}
+
+const AddToOrder: React.FC<AddToCartProps> = (props) => {
+  const { price } = props;
+
   return (
     <div style={wrapperStyles}>
       <div style={quantityControllerStyles}>
@@ -42,7 +48,7 @@ const AddToOrder: React.FC = () => {
             letterSpacing: "0.75px",
             fontWeight: "500",
           }}
-        >{`Add to order • ${`R$11.75`}`}</span>
+        >{`Add to order • ${`R$ ${price}`}`}</span>
       </Button>
     </div>
   );

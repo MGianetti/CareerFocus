@@ -87,7 +87,7 @@ const OnlineMenu: React.FC = () => {
                         price={item.price}
                         imgSrc={item?.images?.find(() => true)?.image}
                         isPopoverOpen={isPopoverOpen}
-                        onClick={(e) => {
+                        onClick={() => {
                           dispatch({ type: "ADD_ITEM", item });
                           setIsPropoverOpen(true);
                           setPopoverContent(<ItemDetails item={item} />);

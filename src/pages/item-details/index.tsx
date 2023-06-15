@@ -34,30 +34,12 @@ interface ItemDetailsProp {
   quantity: number;
 }
 
-const ItemDetails: React.FC<ItemDetailsProp> = (props) => {
-  const { item } = props;
-  console.log({ item });
+interface ItemDetailsProps {
+  item: ItemDetailsProp;
+}
 
-  const a = {
-    id: 1625701,
-    name: "Hard Core",
-    description:
-      "180g angus beef burger, with shredded ribs, gruyere cheese, caramelized onions, lettuce, confit tomato, special house bread, served with fried cassava and passion fruit chipotle.",
-    alcoholic: 0,
-    price: 33,
-    position: 0,
-    visible: 1,
-    availabilityType: "AVAILABLE_NOW",
-    sku: "I1625701",
-    images: [
-      {
-        id: 108305,
-        image:
-          "https://preodemo.gumlet.io/usr/venue/7602/menuItem/646fbdc8cecca.png",
-      },
-    ],
-    available: true,
-  };
+const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
+  const { item } = props;
 
   const renderModifier = () => (
     <div style={modifierWrapperStyles}>
@@ -70,19 +52,26 @@ const ItemDetails: React.FC<ItemDetailsProp> = (props) => {
     </div>
   );
 
+  const renderModifierHeader = () => (
+    <div style={subDetailsWrapperStyles}>
+      <h1 style={subHeadingStyles}>Smash</h1>
+      <p style={subHeadingParagraphStyles}>Lorem ipsum dolor amet</p>
+    </div>
+  );
+
+  const normalizedImgSrc =
+    item.images !== undefined ? item.images[0].image : false;
+
+  const hasImgSrc = normalizedImgSrc;
+
   return (
     <div style={wrapperStyles} key={item.name}>
-      <img style={imgStyles} src={item.images[0].image} />
+      {hasImgSrc && <img style={imgStyles} src={normalizedImgSrc} />}
       <div style={detailsWraperStyles}>
         <h1 style={headingStyles}>{item.name}</h1>
         <p style={headingParagraphStyles}>{item.description}</p>
       </div>
-      <div style={subDetailsWrapperStyles}>
-        <h1 style={subHeadingStyles}>Smash</h1>
-        <p style={subHeadingParagraphStyles}>Lorem ipsum dolor amet</p>
-      </div>
-
-      <AddToOrder />
+      <AddToOrder price={item.price} />
     </div>
   );
 };

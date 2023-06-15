@@ -1,7 +1,4 @@
-type CloseIconProps = {
-  size?: number;
-  color?: string;
-};
+import { CloseIconProps } from "./close-icon.types";
 
 const CloseIcon: React.FC<CloseIconProps> = ({
   size = 24,

@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+import Popover from "@components/pop-over";
+import ItemDetails from "@pages/item-details";
+import Basket from "@pages/basket";
+import AddToOrder from "@pages/item-details/add-to-order";
+import { MainLayout } from "@layouts";
+import { useResponsiveness } from "@contexts/responsiveness";
+import { useData } from "@contexts/restaurant";
+import { ItemDetailsProp } from "@pages/item-details/item-details.types";
 import {
   Collapser,
   InputSearch,
@@ -7,14 +15,6 @@ import {
   MenuOption,
   NavBar,
 } from "@components";
-import { MainLayout } from "@layouts";
-import { useResponsiveness } from "@contexts/responsiveness";
-import Popover from "@components/pop-over";
-import ItemDetails, { ItemDetailsProp } from "@pages/item-details";
-import Basket from "@pages/basket";
-import { useData } from "@contexts/restaurant";
-import AddToOrder from "@pages/item-details/add-to-order";
-
 import {
   basketWrapperStyles,
   menuNavWrapperSmStyles,

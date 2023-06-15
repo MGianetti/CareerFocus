@@ -1,18 +1,16 @@
-import { SearchIcon } from "@components/icon";
 import React, { useState } from "react";
+
+import { SearchIcon } from "@components/icon";
+import { useResponsiveness } from "@contexts/responsiveness";
+import { InputSearchProps } from "./input-search.types";
 import {
   inputSearchStyles,
   searchIconStyles,
   wrapperSmStyles,
   wrapperStyles,
 } from "./input-search.styles";
-import { useResponsiveness } from "@contexts/responsiveness";
 
-interface Props {
-  placeholder: string;
-}
-
-const InputSearch: React.FC<Props> = (props) => {
+const InputSearch: React.FC<InputSearchProps> = (props) => {
   const { isSmall } = useResponsiveness();
   const { placeholder } = props;
   const [searchText, setSearchText] = useState("");

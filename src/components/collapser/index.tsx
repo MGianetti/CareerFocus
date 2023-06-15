@@ -1,17 +1,14 @@
+import { FC, useState } from "react";
+
 import ChevronIcon from "@components/icon/chevron";
-import { FC, ReactNode, useState } from "react";
+
+import { CollapserProps } from "./collapser.types";
 import {
   buttonStyles,
   categoryStyles,
   collapserStyles,
   collapsingRowStyles,
 } from "./collapser.styles";
-
-interface CollapserProps {
-  category: string;
-  children: ReactNode;
-  id: string;
-}
 
 const Collapser: FC<CollapserProps> = (props) => {
   const { category, children, id } = props;

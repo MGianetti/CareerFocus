@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   AddIcon,
   ChevronIcon,
@@ -7,17 +8,8 @@ import {
   RemoveIcon,
   SearchIcon,
 } from "../icon";
+import { IconButtonProps } from "./icon-button.types";
 import { iconButtonStyles } from "./icon-button.styles";
-
-type IconButtonProps = {
-  backgroundColor?: string;
-  color?: string;
-  icon: "add" | "chevron" | "close" | "hamburguer" | "remove" | "search";
-  onClick?: () => void;
-  position: string;
-  size?: number;
-  margin?: string;
-};
 
 const iconComponents = {
   add: AddIcon,

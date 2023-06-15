@@ -1,4 +1,9 @@
 import React, { MouseEventHandler, useState } from "react";
+
+import { useResponsiveness } from "@contexts/responsiveness";
+import { HamburgerIcon } from "@components/icon";
+import { useData } from "@contexts/restaurant";
+import { NavBarProps } from "./nav-bar.types";
 import {
   aStyles,
   borderWrapperStyles,
@@ -12,19 +17,8 @@ import {
   navStyles,
   ulStyles,
 } from "./nav-bar.styles";
-import { useResponsiveness } from "@contexts/responsiveness";
-import { HamburgerIcon } from "@components/icon";
-import { useData } from "@contexts/restaurant";
 
-interface Option {
-  label: string;
-  href: string;
-}
-interface Props {
-  options: Option[];
-}
-
-const NavBar: React.FC<Props> = (props) => {
+const NavBar: React.FC<NavBarProps> = (props) => {
   const { options } = props;
 
   const { isSmall } = useResponsiveness();

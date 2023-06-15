@@ -1,8 +1,6 @@
 import { FC } from "react";
 
-interface ChevronIconProps {
-  isOpen?: boolean;
-}
+import { ChevronIconProps } from "./chevron.types";
 
 const ChevronIcon: FC<ChevronIconProps> = ({ isOpen }) => (
   <svg

@@ -1,19 +1,16 @@
 import React, { ReactNode } from "react";
 import { createPortal } from "react-dom";
+
+import { IconButton } from "@components";
+import useEscapeKey from "@hooks/useEscapeKey";
+import { useResponsiveness } from "@contexts/responsiveness";
+import { PopoverContentProps } from "./pop-over.types";
 import {
   closeStyles,
   contentSmStyles,
   contentStyles,
   contentWrapperStyles,
 } from "./pop-over.styles";
-import { IconButton } from "@components";
-import useEscapeKey from "@hooks/useEscapeKey";
-import { useResponsiveness } from "@contexts/responsiveness";
-
-type PopoverContentProps = {
-  onClose: () => void;
-  children: ReactNode;
-};
 
 const PopoverContent: React.FC<PopoverContentProps> = (props) => {
   const { onClose, children } = props;

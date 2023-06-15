@@ -1,16 +1,7 @@
-import React, { ReactNode } from "react";
-import { buttonStyles } from "./button.styles";
+import React from "react";
 
-interface ButtonProps {
-  children: ReactNode;
-  backgroundColor: string;
-  margin: number | string;
-  padding: number | string;
-  borderRadius: number | string;
-  width?: number | string;
-  height?: number | string;
-  onClick?: () => void;
-}
+import { buttonStyles } from "./button.styles";
+import { ButtonProps } from "./button.types";
 
 const Button: React.FC<ButtonProps> = (props) => {
   const {
@@ -19,8 +10,8 @@ const Button: React.FC<ButtonProps> = (props) => {
     backgroundColor,
     margin,
     padding,
-    width,
-    height,
+    width = 0,
+    height = 0,
     borderRadius,
   } = props;
 

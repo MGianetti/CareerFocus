@@ -1,4 +1,6 @@
 import React, { MouseEventHandler, useState } from "react";
+
+import { MenuNavProps } from "./menu-nav.types";
 import {
   menuItemStyles,
   menuNavStyles,
@@ -9,16 +11,8 @@ import {
   whiteBorderStyles,
 } from "./menu-nav.styles";
 
-interface Option {
-  label: string;
-  src: string;
-}
-interface Props {
-  options: Option[] | undefined;
-}
-
-const MenuNav: React.FC<Props> = (props) => {
-  const { options } = props;
+const MenuNav: React.FC<MenuNavProps> = (props) => {
+  const { options = [] } = props;
 
   const [selectedOption, setSelectedOption] = useState(0);
 

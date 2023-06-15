@@ -1,4 +1,9 @@
-import React, { MouseEvent } from "react";
+import React from "react";
+
+import { Badge } from "@components";
+import { useResponsiveness } from "@contexts/responsiveness";
+import { useBasket } from "@contexts/basket";
+import { MenuOptionProps } from "./menu-option.types";
 import {
   imageWrapperStyles,
   imgStyles,
@@ -10,21 +15,8 @@ import {
   descriptionSmStyles,
   descriptionXsmStyles,
 } from "./menu-option.styles";
-import { Badge } from "@components";
-import { useResponsiveness } from "@contexts/responsiveness";
-import { useBasket } from "@contexts/basket";
 
-interface Props {
-  title: string;
-  description: string;
-  id: number;
-  price: number;
-  imgSrc: string | undefined;
-  isPopoverOpen: boolean;
-  onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-}
-
-const MenuOption: React.FC<Props> = (props) => {
+const MenuOption: React.FC<MenuOptionProps> = (props) => {
   const { title, description, price, imgSrc, onClick, id } = props;
   const { getItemQuantity } = useBasket();
   const { isSmall, isExtraSmall } = useResponsiveness();

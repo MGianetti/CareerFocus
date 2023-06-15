@@ -1,5 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
 import { Button, IconButton } from "@components";
+import { useResponsiveness } from "@contexts/responsiveness";
+import { useBasket } from "@contexts/basket";
+import { AddToCartProps } from "./add-to-order.types";
 import {
   addToOrderButtonStyles,
   quantityControllerStyles,
@@ -7,17 +9,6 @@ import {
   wrapperSmStyles,
   wrapperStyles,
 } from "./add-to-order.styles";
-import { useResponsiveness } from "@contexts/responsiveness";
-import { useBasket } from "@contexts/basket";
-
-interface AddToCartProps {
-  price?: number;
-  quantityToAdd?: number;
-  isPopOverClosed?: boolean;
-  onClickAddToOrder?: () => void;
-  onClickYourBasket?: () => void;
-  handleQuantityChange: Dispatch<SetStateAction<number>>;
-}
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const {

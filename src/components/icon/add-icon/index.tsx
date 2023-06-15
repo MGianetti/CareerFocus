@@ -1,9 +1,6 @@
 import React from "react";
 
-type AddIconProps = {
-  size?: number;
-  color?: string;
-};
+import { AddIconProps } from "./add-icon.types";
 
 const AddIcon: React.FC<AddIconProps> = ({ size = 24, color = "black" }) => {
   return (

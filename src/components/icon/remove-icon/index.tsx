@@ -1,9 +1,6 @@
 import React from "react";
 
-type RemoveIconProps = {
-  size?: number;
-  color?: string;
-};
+import { RemoveIconProps } from "./remove-icons.types";
 
 const RemoveIcon: React.FC<RemoveIconProps> = ({
   size = 24,

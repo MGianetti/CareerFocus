@@ -34,6 +34,8 @@ const initialState: State = {
 };
 
 function reducer(state: State, action: Action): State {
+  console.log(action);
+
   switch (action.type) {
     case "ADD_ITEM":
       if (state.items.find((item) => item.id === action.item.id)) {
@@ -59,9 +61,9 @@ function reducer(state: State, action: Action): State {
         ...state,
         items: state.items.map((item) => {
           if (item.id === action.itemId && item.quantity > 0) {
-            return { ...item, quantity: item.quantity + 1 };
+            return { ...item, quantity: item.quantity - 1 };
           }
-          return { ...item, quantity: item.quantity + 1 };
+          return item;
         }),
       };
 
@@ -98,8 +100,6 @@ export const BasketProvider: React.FC<ProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getItemQuantity = (itemId: number): number => {
-    console.log(state.items);
-
     const item = state.items.find((item) => item.id === itemId);
     const hasQuantity = item?.quantity !== undefined;
     return hasQuantity ? item?.quantity : 0;

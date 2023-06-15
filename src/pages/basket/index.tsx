@@ -29,6 +29,7 @@ const Basket: React.FC = () => {
     return (
       !isLoading &&
       state.items.map((item) => {
+        if (item.quantity === 0) return null;
         return (
           <div style={basketItemWrapperStyles} key={item.id}>
             <div style={basketInfosrapperStyles}>

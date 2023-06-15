@@ -67,7 +67,7 @@ const OnlineMenu: React.FC = () => {
     setPopoverContent(
       <ItemDetails
         item={item}
-        onAddToBasket={(quantity) => dispatch({ type: "ADD_ITEM", item })}
+        onAddToBasket={() => dispatch({ type: "ADD_ITEM", item })}
       />
     );
   };

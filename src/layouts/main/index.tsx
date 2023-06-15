@@ -1,7 +1,13 @@
 import React, { ReactNode } from "react";
 
 import { useResponsiveness } from "@contexts/responsiveness";
-import { mainContent, mainContentSmall, mainWrapper } from "./main.styles";
+import {
+  loadingMainContentStyles,
+  mainContentSmallStyles,
+  mainContentStyles,
+  mainWrapper,
+} from "./main.styles";
+import { Spinner } from "@components";
 
 interface Props {
   children: ReactNode;
@@ -12,12 +18,16 @@ const Main: React.FC<Props> = (props) => {
   const { children, isLoading } = props;
   const { isSmall } = useResponsiveness();
 
-  const responsiveStyle = isSmall ? mainContentSmall : mainContent;
+  const responsiveStyle = isSmall ? mainContentSmallStyles : mainContentStyles;
 
   return (
     <div style={mainWrapper}>
       {!isLoading && <div style={responsiveStyle}>{children}</div>}
-      {isLoading && <div style={responsiveStyle}>Loading</div>}
+      {isLoading && (
+        <div style={loadingMainContentStyles}>
+          <Spinner />
+        </div>
+      )}
     </div>
   );
 };

@@ -6,3 +6,4 @@ export { default as InputSearch } from "./input-search";
 export { default as MenuNav } from "./menu-nav";
 export { default as MenuOption } from "./menu-option";
 export { default as NavBar } from "./nav-bar";
+export { default as Spinner } from "./spinner";

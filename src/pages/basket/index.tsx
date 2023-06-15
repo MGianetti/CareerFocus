@@ -30,13 +30,13 @@ const Basket: React.FC = () => {
       !isLoading &&
       state.items.map((item) => {
         return (
-          <div style={basketItemWrapperStyles}>
+          <div style={basketItemWrapperStyles} key={item.id}>
             <div style={basketInfosrapperStyles}>
-              <h3 style={basketItemTitleStyles}>Caipirinha</h3>
-              <span style={itemPriceStyles}>R$ 13,00</span>
+              <h3 style={basketItemTitleStyles}>{item.name}</h3>
+              <span style={itemPriceStyles}>{`R$ ${item.price}`}</span>
             </div>
             <div style={basketSubInfosWrapperStyles}>
-              <h3 style={basketSubInfosStyles}>Com 10 limões</h3>
+              <h3 style={basketSubInfosStyles}>{item.description}</h3>
             </div>
             <div style={quantityControllerStyles}>
               <IconButton

@@ -7,6 +7,7 @@ import {
   titleStyles,
   badgeTitleStyles,
   descriptionStyles,
+  descriptionSmStyles,
 } from "./menu-option.styles";
 import { Badge } from "@components";
 import { useResponsiveness } from "@contexts/responsiveness";
@@ -14,6 +15,7 @@ import { useResponsiveness } from "@contexts/responsiveness";
 interface Props {
   title: string;
   description: string;
+  id: number;
   price: number;
   imgSrc: string | undefined;
   isPopoverOpen: boolean;
@@ -21,7 +23,7 @@ interface Props {
 }
 
 const MenuOption: React.FC<Props> = (props) => {
-  const { title, description, price, imgSrc, onClick } = props;
+  const { title, description, price, imgSrc, onClick, id } = props;
 
   const { isSmall } = useResponsiveness();
   return (
@@ -29,7 +31,7 @@ const MenuOption: React.FC<Props> = (props) => {
       <div
         style={menuOptionWrapperStyles}
         onClick={(e) => onClick(e)}
-        key={`${title}-key`}
+        key={`${id}-key`}
       >
         <div style={optionsDescriptionStyles}>
           <div style={badgeTitleStyles}>
@@ -37,25 +39,7 @@ const MenuOption: React.FC<Props> = (props) => {
             {/* <Badge>0</Badge> */}
             <h1 style={titleStyles}>{title}</h1>
           </div>
-          <p
-            style={
-              isSmall
-                ? {
-                    height: "37px",
-                    width: "191px",
-                    overflow: "hidden",
-                    display: "inline-block",
-                    width: "177px",
-                    overflow: "hidden",
-                    display: "-webkit-box",
-                    WebkitLineClamp: "2",
-                    WebkitBoxOrient: "vertical",
-                    background: "#fff",
-                    textOverflow: "ellipsis",
-                  }
-                : descriptionStyles
-            }
-          >
+          <p style={isSmall ? descriptionSmStyles : descriptionStyles}>
             {description}
           </p>
           <span>{`R$ ${price},00`}</span>

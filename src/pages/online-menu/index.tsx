@@ -16,7 +16,7 @@ import {
   wrapperStyles,
 } from "./online-menu.styles";
 import Popover from "@components/pop-over";
-import ItemDetails from "@pages/item-details";
+import ItemDetails, { ItemDetailsProp } from "@pages/item-details";
 import Basket from "@pages/basket";
 import { useData } from "@contexts/restaurant";
 import { useBasket } from "@contexts/basket";
@@ -28,7 +28,7 @@ const imgsFallback = [
 ];
 
 const OnlineMenu: React.FC = () => {
-  const [isPopoverOpen, setIsPropoverOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const [popoverContent, setPopoverContent] = useState<JSX.Element | null>(
     null
@@ -61,6 +61,12 @@ const OnlineMenu: React.FC = () => {
     return <MenuNav options={sectionsMenu} />;
   };
 
+  const handleMenuOptionClick = (item: ItemDetailsProp) => () => {
+    dispatch({ type: "ADD_ITEM", item });
+    setIsPopoverOpen(true);
+    setPopoverContent(<ItemDetails item={item} />);
+  };
+
   return (
     <>
       {renderNavBar()}
@@ -72,7 +78,7 @@ const OnlineMenu: React.FC = () => {
             {!isLoading && renderMenuNav()}
             <Popover
               isOpen={isPopoverOpen}
-              onClose={() => setIsPropoverOpen(false)}
+              onClose={() => setIsPopoverOpen(false)}
             >
               {popoverContent}
             </Popover>
@@ -83,15 +89,12 @@ const OnlineMenu: React.FC = () => {
                     {section.items.map((item) => (
                       <MenuOption
                         title={item.name}
+                        id={item.id}
                         description={item.description}
                         price={item.price}
                         imgSrc={item?.images?.find(() => true)?.image}
                         isPopoverOpen={isPopoverOpen}
-                        onClick={() => {
-                          dispatch({ type: "ADD_ITEM", item });
-                          setIsPropoverOpen(true);
-                          setPopoverContent(<ItemDetails item={item} />);
-                        }}
+                        onClick={handleMenuOptionClick(item as ItemDetailsProp)}
                       />
                     ))}
                   </Collapser>

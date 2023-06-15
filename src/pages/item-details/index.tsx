@@ -19,7 +19,29 @@ interface Image {
   image: string;
 }
 
-interface ItemDetailsProp {
+interface ItemModifier {
+  id: number;
+  name: string;
+  price: number;
+  maxChoices: number;
+  position: number;
+  visible: number;
+  availabilityType: string;
+  available: boolean;
+  qty?: number;
+}
+
+interface Choice {
+  id: number;
+  name: string;
+  minChoices: number;
+  maxChoices: number;
+  items: ItemModifier[];
+}
+
+type Choices = Choice[];
+
+export interface ItemDetailsProp {
   id: number;
   name: string;
   description: string;
@@ -31,6 +53,7 @@ interface ItemDetailsProp {
   available: boolean;
   sku: string;
   images: Image[];
+  modifiers?: Choices;
   quantity: number;
 }
 
@@ -40,6 +63,8 @@ interface ItemDetailsProps {
 
 const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
   const { item } = props;
+
+  const hasItemModifiers = item.modifiers ?? false;
 
   const renderModifier = () => (
     <div style={modifierWrapperStyles}>
@@ -54,7 +79,9 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
 
   const renderModifierHeader = () => (
     <div style={subDetailsWrapperStyles}>
-      <h1 style={subHeadingStyles}>Smash</h1>
+      <h1 style={subHeadingStyles}>
+        {hasItemModifiers && item.modifiers[0].name}
+      </h1>
       <p style={subHeadingParagraphStyles}>Lorem ipsum dolor amet</p>
     </div>
   );
@@ -71,6 +98,8 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
         <h1 style={headingStyles}>{item.name}</h1>
         <p style={headingParagraphStyles}>{item.description}</p>
       </div>
+      {hasItemModifiers && renderModifierHeader()}
+      {/* {hasItemModifiers && } */}
       <AddToOrder price={item.price} />
     </div>
   );

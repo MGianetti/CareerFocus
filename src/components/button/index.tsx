@@ -10,8 +10,8 @@ const Button: React.FC<ButtonProps> = (props) => {
     backgroundColor,
     margin,
     padding,
-    width = 0,
-    height = 0,
+    width = "fit-content",
+    height = "auto",
     borderRadius,
   } = props;
 

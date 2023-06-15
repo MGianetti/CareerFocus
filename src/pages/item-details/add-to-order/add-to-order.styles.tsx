@@ -27,4 +27,13 @@ export const quantityControllerStyles: React.CSSProperties = {
   display: "flex",
   alignContent: "center",
   justifyContent: "center",
+  alignItems: "center",
+};
+
+export const addToOrderButtonStyles: React.CSSProperties = {
+  fontFamily: "Roboto",
+  color: "white",
+  fontSize: "18px",
+  letterSpacing: "0.75px",
+  fontWeight: "500",
 };

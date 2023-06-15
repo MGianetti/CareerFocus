@@ -22,7 +22,7 @@ interface BasketItem {
 export type Action =
   | { type: "ADD_ITEM"; item: BasketItem }
   | { type: "REMOVE_ITEM"; itemId: number }
-  | { type: "UPDATE_ITEM"; itemId: number; quantity: number }
+  | { type: "UPDATE_ITEM"; itemId: number }
   | { type: "CLEAR" };
 
 interface State {
@@ -41,29 +41,43 @@ function reducer(state: State, action: Action): State {
           ...state,
           items: state.items.map((item) =>
             item.id === action.item.id
-              ? { ...item, quantity: item.quantity + 1 }
+              ? {
+                  ...item,
+                  quantity: item.quantity + 1,
+                }
               : item
           ),
         };
       }
-      return { ...state, items: [...state.items, action.item] };
+      return {
+        ...state,
+        items: [...state.items, { ...action.item, quantity: 1 }],
+      };
 
     case "REMOVE_ITEM":
       return {
         ...state,
-        items: state.items.filter((item) => item.id !== action.itemId),
+        items: state.items.map((item) => {
+          if (item.id === action.itemId && item.quantity > 0) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          return { ...item, quantity: item.quantity + 1 };
+        }),
       };
+
     case "UPDATE_ITEM":
       return {
         ...state,
         items: state.items.map((item) =>
           item.id === action.itemId
-            ? { ...item, quantity: action.quantity }
+            ? { ...item, quantity: item.quantity + 1 }
             : item
         ),
       };
+
     case "CLEAR":
       return { ...state, items: [] };
+
     default:
       return state;
   }
@@ -73,7 +87,8 @@ function reducer(state: State, action: Action): State {
 const BasketContext = createContext<{
   state: State;
   dispatch: React.Dispatch<Action>;
-}>({ state: initialState, dispatch: () => null });
+  getItemQuantity: (itemId: number) => number;
+}>({ state: initialState, dispatch: () => null, getItemQuantity: () => 0 });
 
 type ProviderProps = {
   children: ReactNode;
@@ -82,8 +97,16 @@ type ProviderProps = {
 export const BasketProvider: React.FC<ProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const getItemQuantity = (itemId: number): number => {
+    console.log(state.items);
+
+    const item = state.items.find((item) => item.id === itemId);
+    const hasQuantity = item?.quantity !== undefined;
+    return hasQuantity ? item?.quantity : 0;
+  };
+
   return (
-    <BasketContext.Provider value={{ state, dispatch }}>
+    <BasketContext.Provider value={{ state, dispatch, getItemQuantity }}>
       {children}
     </BasketContext.Provider>
   );

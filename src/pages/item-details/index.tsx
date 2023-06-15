@@ -14,6 +14,7 @@ import {
   wrapperStyles,
   checkboxStyles,
 } from "./item-details.styles";
+import { useState } from "react";
 
 interface Image {
   id: number;
@@ -60,11 +61,12 @@ export interface ItemDetailsProp {
 
 interface ItemDetailsProps {
   item: ItemDetailsProp;
-  onAddToBasket: () => void;
+  onAddToBasket: (items: ItemDetailsProp) => void;
 }
 
 const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
   const { item, onAddToBasket } = props;
+  const [quantityToAdd, setQuantityToAdd] = useState({ ...item, quantity: 1 });
 
   const hasItemModifiers = item.modifiers ?? false;
 
@@ -102,7 +104,19 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
       </div>
       {hasItemModifiers && renderModifierHeader()}
       {/* {hasItemModifiers && } */}
-      <AddToOrder price={item.price} onClick={onAddToBasket} />
+      <AddToOrder
+        price={item.price}
+        onClick={onAddToBasket(quantityToAdd)}
+        addToOrder={() =>
+          setQuantityToAdd({ ...item, quantity: item.quantity + 1 })
+        }
+        removeFromOrder={() =>
+          setQuantityToAdd({
+            ...item,
+            quantity: item.quantity > 0 ? item.quantity - 1 : 0,
+          })
+        }
+      />
     </div>
   );
 };

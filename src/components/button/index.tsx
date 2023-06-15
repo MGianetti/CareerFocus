@@ -9,7 +9,7 @@ interface ButtonProps {
   borderRadius: number | string;
   width?: number | string;
   height?: number | string;
-  onClick?: () => undefined;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = (props) => {

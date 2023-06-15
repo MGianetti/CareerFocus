@@ -1,5 +1,6 @@
 import { Button, IconButton } from "@components";
 import {
+  addToOrderButtonStyles,
   quantityControllerStyles,
   quantityCounterStyles,
   wrapperStyles,
@@ -7,11 +8,14 @@ import {
 
 interface AddToCartProps {
   price: number;
+  quantityToAdd: number;
   onClick: () => void;
+  addToOrder: () => void;
+  removeFromOrder: () => void;
 }
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
-  const { price, onClick } = props;
+  const { price, quantityToAdd, onClick, addToOrder, removeFromOrder } = props;
 
   return (
     <div style={wrapperStyles}>
@@ -22,14 +26,16 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
           size={32}
           color="#5F5F5F"
           backgroundColor="#DADADA"
+          onClick={addToOrder}
         />
-        <span style={quantityCounterStyles}>1</span>
+        <span style={quantityCounterStyles}>{quantityToAdd}</span>
         <IconButton
           position="inherit"
           icon="add"
           size={32}
           color="white"
           backgroundColor="#4F372F"
+          onClick={removeFromOrder}
         />
       </div>
 
@@ -42,14 +48,8 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
         borderRadius="40px"
       >
         <span
-          style={{
-            fontFamily: "Roboto",
-            color: "white",
-            fontSize: "18px",
-            letterSpacing: "0.75px",
-            fontWeight: "500",
-          }}
-          onClick={onClick}
+          style={addToOrderButtonStyles}
+          onClick={() => onClick(quantityToAdd)}
         >{`Add to order • ${`R$ ${price}`}`}</span>
       </Button>
     </div>

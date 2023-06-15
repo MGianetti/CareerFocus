@@ -22,7 +22,7 @@ import {
 import { Button, IconButton } from "@components";
 
 const Basket: React.FC = () => {
-  const { state, dispatch } = useBasket();
+  const { state, dispatch, getItemQuantity } = useBasket();
   const isLoading = state.items === undefined;
 
   const renderBasketItems = () => {
@@ -45,14 +45,22 @@ const Basket: React.FC = () => {
                 size={20}
                 color="white"
                 backgroundColor="#4F372F"
+                onClick={() =>
+                  dispatch({ type: "REMOVE_ITEM", itemId: item.id })
+                }
               />
-              <span style={quantityCounterStyles}>1</span>
+              <span style={quantityCounterStyles}>
+                {getItemQuantity(item.id)}
+              </span>
               <IconButton
                 position="inherit"
                 icon="add"
                 size={20}
                 color="white"
                 backgroundColor="#4F372F"
+                onClick={() =>
+                  dispatch({ type: "UPDATE_ITEM", itemId: item.id })
+                }
               />
             </div>
           </div>
@@ -87,6 +95,7 @@ const Basket: React.FC = () => {
           margin={0}
           padding={20}
           borderRadius="40px"
+          onClick={() => dispatch({ type: "CLEAR" })}
         >
           <span style={checkoutLabelStyles}>{`Checkout Now`}</span>
         </Button>

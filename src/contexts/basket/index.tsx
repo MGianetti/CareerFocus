@@ -34,8 +34,6 @@ const initialState: State = {
 };
 
 function reducer(state: State, action: Action): State {
-  console.log({ action });
-  console.log({ state });
   switch (action.type) {
     case "ADD_ITEM":
       if (state.items.find((item) => item.id === action.item.id)) {

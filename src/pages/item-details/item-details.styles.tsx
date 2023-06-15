@@ -3,7 +3,6 @@ import { defaultTheme } from "@theme";
 export const wrapperStyles: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  overflowY: "scroll",
   maxHeight: "720px",
 };
 export const imgStyles: React.CSSProperties = {

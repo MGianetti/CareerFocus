@@ -26,11 +26,13 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
   const hasItemModifiers = item.modifiers ?? false;
 
   const renderModifier = () =>
-    item?.modifiers.map((modifier) => (
+    item?.modifiers[0].items.map((modifier) => (
       <div style={modifierWrapperStyles}>
         <div>
-          <h1 style={modifierHeadingStyles}>Smash</h1>
-          <p style={modifierParagraphStyles}>Lorem ipsum dolor amet</p>
+          <h1 style={modifierHeadingStyles}>{modifier.name}</h1>
+          <p style={modifierParagraphStyles}>{`R$ ${
+            item.price + modifier.price
+          }`}</p>
         </div>
 
         <input style={checkboxStyles} type="checkbox" />

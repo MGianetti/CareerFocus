@@ -8,7 +8,11 @@ interface Props {
 
 const Badge: React.FC<Props> = (props) => {
   const { children, background = "#4F372F" } = props;
-  return <div style={{ ...badgeStyles, background }}>{children}</div>;
+  return (
+    <div style={{ ...badgeStyles, backgroundColor: background }}>
+      {children}
+    </div>
+  );
 };
 
 export default Badge;

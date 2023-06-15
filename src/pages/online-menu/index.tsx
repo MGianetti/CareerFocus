@@ -61,14 +61,18 @@ const OnlineMenu: React.FC = () => {
   };
 
   const handleMenuOptionClick = (item: ItemDetailsProp) => () => {
-    setIsPopoverOpen(true);
-
     setPopoverContent(
       <ItemDetails
         item={item}
         closeAfterPopoverAdding={() => setIsPopoverOpen(false)}
       />
     );
+    setIsPopoverOpen(true);
+  };
+
+  const handleMyBasketClick = () => {
+    setPopoverContent(<Basket />);
+    setIsPopoverOpen(true);
   };
 
   return (
@@ -106,7 +110,10 @@ const OnlineMenu: React.FC = () => {
               })}
           </div>
           {isSmall && !isPopoverOpen ? (
-            <AddToOrder isPopOverClosed={!isPopoverOpen} />
+            <AddToOrder
+              isPopOverClosed={!isPopoverOpen}
+              onClickYourBasket={handleMyBasketClick}
+            />
           ) : (
             <div style={basketWrapperStyles}>
               <Basket />

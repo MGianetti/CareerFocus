@@ -14,7 +14,8 @@ interface AddToCartProps {
   price: number;
   quantityToAdd: number;
   isPopOverClosed: boolean;
-  onClick: () => void;
+  onClickAddToOrder: () => void;
+  onClickYourBasket: () => void;
   handleQuantityChange: (
     quantityToAdd: number
   ) => Dispatch<SetStateAction<number>>;
@@ -24,7 +25,8 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const {
     price,
     quantityToAdd,
-    onClick,
+    onClickAddToOrder,
+    onClickYourBasket,
     handleQuantityChange,
     isPopOverClosed,
   } = props;
@@ -88,12 +90,12 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
         {shouldRenderFooterBasket ? (
           <span
             style={addToOrderButtonStyles}
-            onClick={onClick}
+            onClick={onClickYourBasket}
           >{`Your basket • ${`${getTotalOrderItems()} item`}`}</span>
         ) : (
           <span
             style={addToOrderButtonStyles}
-            onClick={onClick}
+            onClick={onClickAddToOrder}
           >{`Add to order • ${`R$ ${price * quantityToAdd}`}`}</span>
         )}
       </Button>

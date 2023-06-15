@@ -1,4 +1,4 @@
-import { Action, useBasket } from "@contexts/basket";
+import { useBasket } from "@contexts/basket";
 import AddToOrder from "./add-to-order";
 import {
   detailsWraperStyles,
@@ -112,7 +112,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
       <AddToOrder
         price={item.price}
         handleQuantityChange={setQuantityToAdd}
-        onClick={() => {
+        onClickAddToOrder={() => {
           dispatch({
             type: "ADD_ITEM",
             item: { ...item, quantity: quantityToAdd },

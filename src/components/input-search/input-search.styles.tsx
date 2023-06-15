@@ -6,7 +6,6 @@ export const wrapperStyles: React.CSSProperties = {
   alignContent: "center",
   alignItems: "center",
   margin: "5px 0",
-  width: "calc(100% + 34px)",
   marginLeft: "-20px",
 };
 

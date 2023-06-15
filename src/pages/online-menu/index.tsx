@@ -12,6 +12,7 @@ import {
   basketWrapperStyles,
   menuNavWrapperSmStyles,
   menuNavWrapperStyles,
+  wrapperSmStyles,
   wrapperStyles,
 } from "./online-menu.styles";
 import Popover from "@components/pop-over";
@@ -64,7 +65,7 @@ const OnlineMenu: React.FC = () => {
       <MainLayout isLoading={isLoading}>
         {!isLoading && renderInputSearch()}
 
-        <div style={wrapperStyles}>
+        <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
           <div style={isSmall ? menuNavWrapperSmStyles : menuNavWrapperStyles}>
             {!isLoading && renderMenuNav()}
             {!isLoading &&
@@ -80,7 +81,6 @@ const OnlineMenu: React.FC = () => {
                           imgSrc={item?.images?.find(() => true)?.image}
                           isPopoverOpen={isPopoverOpen}
                           onClick={(e) => {
-                            e.stopPropagation();
                             console.log({ item });
                             dispatch({ type: "ADD_ITEM", item });
                             // setIsPropoverOpen(true);

@@ -6,6 +6,11 @@ export const wrapperStyles: React.CSSProperties = {
   display: "flex",
 };
 
+export const wrapperSmStyles: React.CSSProperties = {
+  ...wrapperStyles,
+  padding: 0,
+};
+
 export const menuNavWrapperStyles: React.CSSProperties = {
   backgroundColor: "white",
   padding: "30px 35px",
@@ -16,7 +21,7 @@ export const menuNavWrapperStyles: React.CSSProperties = {
 export const menuNavWrapperSmStyles: React.CSSProperties = {
   ...menuNavWrapperStyles,
   width: "100%",
-  minWidth: "500px",
+  minWidth: "400px",
 };
 
 export const basketWrapperStyles: React.CSSProperties = {

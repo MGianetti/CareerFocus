@@ -1,7 +1,6 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 
-import ChevronIcon from "@components/icon/chevron";
-
+import ChevronIcon from "../icon/chevron";
 import { CollapserProps } from "./collapser.types";
 import {
   buttonStyles,

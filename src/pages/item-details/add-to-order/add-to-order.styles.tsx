@@ -10,6 +10,12 @@ export const wrapperStyles: React.CSSProperties = {
   padding: "8px 0",
   backgroundColor: "rgba(255, 255, 255, 0.3)",
   backdropFilter: "blur(4px)",
+  alignItems: "center",
+};
+
+export const wrapperSmStyles: React.CSSProperties = {
+  ...wrapperStyles,
+  width: "100%",
 };
 
 export const quantityCounterStyles: React.CSSProperties = {

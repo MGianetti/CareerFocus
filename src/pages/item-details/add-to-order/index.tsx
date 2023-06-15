@@ -4,8 +4,10 @@ import {
   addToOrderButtonStyles,
   quantityControllerStyles,
   quantityCounterStyles,
+  wrapperSmStyles,
   wrapperStyles,
 } from "./add-to-order.styles";
+import { useResponsiveness } from "@contexts/responsiveness";
 
 interface AddToCartProps {
   price: number;
@@ -18,6 +20,7 @@ interface AddToCartProps {
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const { price, quantityToAdd, onClick, handleQuantityChange } = props;
+  const { isExtraSmall } = useResponsiveness();
 
   const increaseQuantity = () => handleQuantityChange(quantityToAdd + 1);
 
@@ -28,7 +31,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
     handleQuantityChange(normalizedQuantityToDecrease);
 
   return (
-    <div style={wrapperStyles}>
+    <div style={isExtraSmall ? wrapperSmStyles : wrapperStyles}>
       <div style={quantityControllerStyles}>
         <IconButton
           position="inherit"

@@ -8,6 +8,7 @@ import {
   wrapperStyles,
 } from "./add-to-order.styles";
 import { useResponsiveness } from "@contexts/responsiveness";
+import { useBasket } from "@contexts/basket";
 
 interface AddToCartProps {
   price: number;
@@ -20,7 +21,8 @@ interface AddToCartProps {
 
 const AddToOrder: React.FC<AddToCartProps> = (props) => {
   const { price, quantityToAdd, onClick, handleQuantityChange } = props;
-  const { isExtraSmall } = useResponsiveness();
+  const { isSmall } = useResponsiveness();
+  const { getTotalOrderItems } = useBasket();
 
   const increaseQuantity = () => handleQuantityChange(quantityToAdd + 1);
 
@@ -31,26 +33,28 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
     handleQuantityChange(normalizedQuantityToDecrease);
 
   return (
-    <div style={isExtraSmall ? wrapperSmStyles : wrapperStyles}>
-      <div style={quantityControllerStyles}>
-        <IconButton
-          position="inherit"
-          icon="remove"
-          size={32}
-          color="#5F5F5F"
-          backgroundColor="#DADADA"
-          onClick={decreaseQuantity}
-        />
-        <span style={quantityCounterStyles}>{quantityToAdd}</span>
-        <IconButton
-          position="inherit"
-          icon="add"
-          size={32}
-          color="white"
-          backgroundColor="#4F372F"
-          onClick={increaseQuantity}
-        />
-      </div>
+    <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
+      {!isSmall && (
+        <div style={quantityControllerStyles}>
+          <IconButton
+            position="inherit"
+            icon="remove"
+            size={32}
+            color="#5F5F5F"
+            backgroundColor="#DADADA"
+            onClick={decreaseQuantity}
+          />
+          <span style={quantityCounterStyles}>{quantityToAdd}</span>
+          <IconButton
+            position="inherit"
+            icon="add"
+            size={32}
+            color="white"
+            backgroundColor="#4F372F"
+            onClick={increaseQuantity}
+          />
+        </div>
+      )}
 
       <Button
         width={432}
@@ -60,10 +64,17 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
         padding={20}
         borderRadius="40px"
       >
-        <span
-          style={addToOrderButtonStyles}
-          onClick={onClick}
-        >{`Add to order • ${`R$ ${price * quantityToAdd}`}`}</span>
+        {isSmall ? (
+          <span
+            style={addToOrderButtonStyles}
+            onClick={onClick}
+          >{`Your basket • ${`${getTotalOrderItems()} item`}`}</span>
+        ) : (
+          <span
+            style={addToOrderButtonStyles}
+            onClick={onClick}
+          >{`Add to order • ${`R$ ${price * quantityToAdd}`}`}</span>
+        )}
       </Button>
     </div>
   );

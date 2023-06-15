@@ -19,6 +19,7 @@ import Popover from "@components/pop-over";
 import ItemDetails, { ItemDetailsProp } from "@pages/item-details";
 import Basket from "@pages/basket";
 import { useData } from "@contexts/restaurant";
+import AddToOrder from "@pages/item-details/add-to-order";
 
 const imgsFallback = [
   "/src/assets/burguerOption.png",
@@ -104,7 +105,9 @@ const OnlineMenu: React.FC = () => {
                 );
               })}
           </div>
-          {isSmall ? null : (
+          {isSmall ? (
+            <AddToOrder />
+          ) : (
             <div style={basketWrapperStyles}>
               <Basket />
             </div>

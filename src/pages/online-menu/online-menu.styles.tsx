@@ -31,3 +31,5 @@ export const basketWrapperStyles: React.CSSProperties = {
   marginLeft: "35px",
   boxShadow: "0px 2px 14px rgba(0, 0, 0, 0.15)",
 };
+
+export const lastOptionStyles: React.CSSProperties = { height: "122px" };

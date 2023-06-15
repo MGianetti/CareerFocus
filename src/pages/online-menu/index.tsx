@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import {
   Collapser,
   InputSearch,
@@ -8,18 +9,20 @@ import {
 } from "@components";
 import { MainLayout } from "@layouts";
 import { useResponsiveness } from "@contexts/responsiveness";
+import Popover from "@components/pop-over";
+import ItemDetails, { ItemDetailsProp } from "@pages/item-details";
+import Basket from "@pages/basket";
+import { useData } from "@contexts/restaurant";
+import AddToOrder from "@pages/item-details/add-to-order";
+
 import {
   basketWrapperStyles,
   menuNavWrapperSmStyles,
   menuNavWrapperStyles,
   wrapperSmStyles,
   wrapperStyles,
+  lastOptionStyles,
 } from "./online-menu.styles";
-import Popover from "@components/pop-over";
-import ItemDetails, { ItemDetailsProp } from "@pages/item-details";
-import Basket from "@pages/basket";
-import { useData } from "@contexts/restaurant";
-import AddToOrder from "@pages/item-details/add-to-order";
 
 const imgsFallback = [
   "/src/assets/burguerOption.png",
@@ -75,6 +78,13 @@ const OnlineMenu: React.FC = () => {
     setIsPopoverOpen(true);
   };
 
+  useEffect(() => {
+    if (typeof popoverContent === typeof (<Basket />) && !isSmall) {
+      setIsPopoverOpen(false);
+      setPopoverContent(null);
+    }
+  }, [isSmall]);
+
   return (
     <>
       {renderNavBar()}
@@ -86,7 +96,10 @@ const OnlineMenu: React.FC = () => {
             {!isLoading && renderMenuNav()}
             <Popover
               isOpen={isPopoverOpen}
-              onClose={() => setIsPopoverOpen(false)}
+              onClose={() => {
+                setPopoverContent(null);
+                setIsPopoverOpen(false);
+              }}
             >
               {popoverContent}
             </Popover>
@@ -94,17 +107,26 @@ const OnlineMenu: React.FC = () => {
               menu?.sections.map((section) => {
                 return (
                   <Collapser category={section.name} id={`${section.name}-key`}>
-                    {section.items.map((item) => (
-                      <MenuOption
-                        title={item.name}
-                        id={item.id}
-                        description={item.description}
-                        price={item.price}
-                        imgSrc={item?.images?.find(() => true)?.image}
-                        isPopoverOpen={isPopoverOpen}
-                        onClick={handleMenuOptionClick(item as ItemDetailsProp)}
-                      />
-                    ))}
+                    {section.items.map((item, itemIndex) => {
+                      const isLastOption =
+                        itemIndex + 1 === section.items.length;
+                      return (
+                        <>
+                          <MenuOption
+                            title={item.name}
+                            id={item.id}
+                            description={item.description}
+                            price={item.price}
+                            imgSrc={item?.images?.find(() => true)?.image}
+                            isPopoverOpen={isPopoverOpen}
+                            onClick={handleMenuOptionClick(
+                              item as ItemDetailsProp
+                            )}
+                          />
+                          {isLastOption && <div style={lastOptionStyles} />}
+                        </>
+                      );
+                    })}
                   </Collapser>
                 );
               })}

@@ -43,7 +43,7 @@ function reducer(state: State, action: Action): State {
             item.id === action.item.id
               ? {
                   ...item,
-                  quantity: item.quantity + 1,
+                  quantity: item.quantity,
                 }
               : item
           ),

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import {
   imageWrapperStyles,
   imgStyles,
@@ -11,6 +11,7 @@ import {
 } from "./menu-option.styles";
 import { Badge } from "@components";
 import { useResponsiveness } from "@contexts/responsiveness";
+import { useBasket } from "@contexts/basket";
 
 interface Props {
   title: string;
@@ -24,19 +25,26 @@ interface Props {
 
 const MenuOption: React.FC<Props> = (props) => {
   const { title, description, price, imgSrc, onClick, id } = props;
-
+  const { getItemQuantity } = useBasket();
   const { isSmall } = useResponsiveness();
+
+  const shouldRenderBadge = getItemQuantity(id) > 0;
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    onClick(e);
+  };
+
   return (
     <>
       <div
         style={menuOptionWrapperStyles}
-        onClick={(e) => onClick(e)}
+        onClick={handleClick}
         key={`${id}-key`}
       >
         <div style={optionsDescriptionStyles}>
           <div style={badgeTitleStyles}>
-            {/* TODO Sync badge with context */}
-            {/* <Badge>0</Badge> */}
+            {shouldRenderBadge && <Badge>{getItemQuantity(id)}</Badge>}
             <h1 style={titleStyles}>{title}</h1>
           </div>
           <p style={isSmall ? descriptionSmStyles : descriptionStyles}>

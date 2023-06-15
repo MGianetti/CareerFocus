@@ -1,4 +1,6 @@
 import { useBasket } from "@contexts/basket";
+import { Button, IconButton } from "@components";
+
 import {
   barketLabelStyle,
   basketInfosrapperStyles,
@@ -19,10 +21,9 @@ import {
   totalWrapperStyles,
   wrapperStyles,
 } from "./basket.styles";
-import { Button, IconButton } from "@components";
 
 const Basket: React.FC = () => {
-  const { state, dispatch, getItemQuantity } = useBasket();
+  const { state, dispatch, getItemQuantity, getTotalOrderValue } = useBasket();
   const isLoading = state.items === undefined;
 
   const renderBasketItems = () => {
@@ -79,13 +80,15 @@ const Basket: React.FC = () => {
       {/* Sub total */}
       <div style={subTotalWrapperStyles}>
         <h2 style={subTotalLabelWrapperStyles}>Sub total</h2>
-        <span style={subTotalPriceWrapperStyles}>R$ 22,50</span>
+        <span style={subTotalPriceWrapperStyles}>
+          R$ {`${getTotalOrderValue()}`}
+        </span>
       </div>
 
       {/* Total */}
       <div style={totalWrapperStyles}>
         <h2 style={totalLabelWrapperStyles}>Total:</h2>
-        <span style={totalPriceLabelStyles}>R$ 48,00</span>
+        <span style={totalPriceLabelStyles}>R$ {getTotalOrderValue()}</span>
       </div>
 
       {/* Checkout */}

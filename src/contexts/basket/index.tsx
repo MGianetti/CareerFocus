@@ -90,7 +90,13 @@ const BasketContext = createContext<{
   state: State;
   dispatch: React.Dispatch<Action>;
   getItemQuantity: (itemId: number) => number;
-}>({ state: initialState, dispatch: () => null, getItemQuantity: () => 0 });
+  getTotalOrderValue: () => number;
+}>({
+  state: initialState,
+  dispatch: () => null,
+  getItemQuantity: () => 0,
+  getTotalOrderValue: () => 0,
+});
 
 type ProviderProps = {
   children: ReactNode;
@@ -105,8 +111,17 @@ export const BasketProvider: React.FC<ProviderProps> = ({ children }) => {
     return hasQuantity ? item?.quantity : 0;
   };
 
+  const getTotalOrderValue = (): number => {
+    return state.items.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
+
   return (
-    <BasketContext.Provider value={{ state, dispatch, getItemQuantity }}>
+    <BasketContext.Provider
+      value={{ state, dispatch, getItemQuantity, getTotalOrderValue }}
+    >
       {children}
     </BasketContext.Provider>
   );

@@ -7,12 +7,12 @@ const Button: React.FC<ButtonProps> = (props) => {
   const {
     children,
     onClick,
-    backgroundColor,
-    margin,
-    padding,
+    backgroundColor = "white",
+    margin = "10px",
+    padding = "10px",
     width = "fit-content",
     height = "auto",
-    borderRadius,
+    borderRadius = "0",
   } = props;
 
   return (

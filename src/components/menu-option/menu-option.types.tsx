@@ -1,9 +1,9 @@
 export interface MenuOptionProps {
   title: string;
   description: string;
-  id: number;
+  id: number | string;
   price: number;
   imgSrc: string | undefined;
-  isPopoverOpen: boolean;
+  isPopoverOpen?: boolean;
   onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }

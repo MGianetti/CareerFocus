@@ -21,7 +21,7 @@ const MenuOption: React.FC<MenuOptionProps> = (props) => {
   const { getItemQuantity } = useBasket();
   const { isSmall, isExtraSmall } = useResponsiveness();
 
-  const shouldRenderBadge = getItemQuantity(id) > 0;
+  const shouldRenderBadge = getItemQuantity(id as number) > 0;
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -43,7 +43,9 @@ const MenuOption: React.FC<MenuOptionProps> = (props) => {
       >
         <div style={optionsDescriptionStyles}>
           <div style={badgeTitleStyles}>
-            {shouldRenderBadge && <Badge>{getItemQuantity(id)}</Badge>}
+            {shouldRenderBadge && (
+              <Badge>{getItemQuantity(id as number)}</Badge>
+            )}
             <h1 style={titleStyles}>{title}</h1>
           </div>
           <p style={getDescriptionResponsiveStyles()}>{description}</p>

@@ -3,8 +3,8 @@ export const wrapperStyles: React.CSSProperties = {
   display: "flex",
   alignContent: "center",
   alignItems: "center",
-  margin: "5px 0",
-  marginLeft: "-20px",
+  margin: "5px 0px 5px 0",
+  marginLeft: "34px",
 };
 
 export const wrapperSmStyles: React.CSSProperties = {
@@ -14,8 +14,7 @@ export const wrapperSmStyles: React.CSSProperties = {
 
 export const searchIconStyles: React.CSSProperties = {
   color: "#DADADA",
-  position: "relative",
-  left: "34px",
+  marginTop: "3px",
 };
 
 export const inputSearchStyles: React.CSSProperties = {
@@ -26,4 +25,6 @@ export const inputSearchStyles: React.CSSProperties = {
   lineHeight: "18px",
   fontFamily: "Roboto",
   paddingLeft: "40px",
+  marginLeft: "-35px",
+  zIndex: "-1",
 };

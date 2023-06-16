@@ -17,7 +17,10 @@ const InputSearch: React.FC<InputSearchProps> = (props) => {
 
   return (
     <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
-      <SearchIcon style={searchIconStyles} />
+      <div style={searchIconStyles}>
+        <SearchIcon />
+      </div>
+
       <input
         placeholder={placeholder}
         style={inputSearchStyles}

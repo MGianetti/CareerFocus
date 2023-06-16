@@ -57,6 +57,22 @@ Tests can be run with:
  ```
 npm run test
  ```
+ 
+ ## Known Issues
+
+In order to showcase more complex techniques and functionalities, certain sacrifices were made regarding the modifiers logic and search functionality. Although these sacrifices were intentional to prioritize the demonstration of advanced features, it is important to be aware of the limitations they may present. 
+
+1. **Modifiers Logic:**
+   - Sacrifice: The modifiers logic might not be fully implemented or may exhibit inconsistencies in its behavior.
+   - Note: The focus was placed on illustrating more intricate concepts and techniques rather than achieving a fully functional modifiers system. 
+
+2. **Search Functionality:**
+   - Sacrifice: The search functionality is non-existent in the project.
+   - Impact: Users may experience difficulties in searching menu options.
+   - Note: The decision was made to prioritize other aspects of the project, and as a result, the search functionality was not extensively developed.
+
+It is important to keep in mind that the primary objective of the project was to showcase advanced techniques and demonstrate complex functionalities. While the modifiers logic and search functionality may not be fully realized, the project as a whole aims to highlight more sophisticated concepts that can be expanded upon in further development.
+
 
 ## Built With
 

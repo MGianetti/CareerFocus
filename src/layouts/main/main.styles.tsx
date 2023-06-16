@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const mainWrapper: React.CSSProperties = {
   display: "flex",
   justifyContent: "center",

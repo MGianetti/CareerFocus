@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const contentWrapperStyles: React.CSSProperties = {
   backgroundColor: "rgba(0, 0, 0, 0.65)",
   display: "flex",

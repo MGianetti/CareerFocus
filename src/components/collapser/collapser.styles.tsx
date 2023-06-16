@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const collapserStyles: React.CSSProperties = {
   display: "flex",
   width: "100%",

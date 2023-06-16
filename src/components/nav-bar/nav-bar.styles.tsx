@@ -1,7 +1,5 @@
-import { defaultTheme } from "@theme";
-
 export const navStyles: React.CSSProperties = {
-  backgroundColor: defaultTheme.colors.primary,
+  backgroundColor: "darkblue",
   display: "flex",
   justifyContent: "center",
   width: "100%",
@@ -29,8 +27,8 @@ export const liSelectedStyles: React.CSSProperties = {
 
 export const aStyles: React.CSSProperties = {
   display: "flex",
-  fontFamily: defaultTheme.typography.fontFamily,
-  fontWeight: defaultTheme.typography.fontWeight.bold,
+  fontFamily: "Roboto",
+  fontWeight: 700,
   justifyContent: "center",
   textTransform: "uppercase",
   height: "100%",
@@ -69,8 +67,8 @@ export const borderWrapperStyles: React.CSSProperties = {
 export const centralWrapperStyles: React.CSSProperties = {
   ...mobileWrapperStyles,
   color: "white",
-  fontFamily: defaultTheme.typography.fontFamily,
-  fontWeight: defaultTheme.typography.fontWeight.normal,
+  fontFamily: "Roboto",
+  fontWeight: 400,
   width: "80%",
   fontSize: "18px",
 };

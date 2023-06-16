@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const badgeStyles: React.CSSProperties = {
   alignItems: "center",
   borderRadius: "4px",

@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const menuNavStyles: React.CSSProperties = {
   display: "flex",
   minWidth: "500px",

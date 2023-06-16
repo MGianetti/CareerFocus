@@ -48,7 +48,12 @@
       "<rootDir>/jest-setup.ts"
     ],
     "moduleNameMapper": {
-      "\\.(css|less)$": "identity-obj-proxy"
+      "\\.(css|less)$": "identity-obj-proxy",
+      "^@root(.*)$": "<rootDir>/src$1",
+      "^@components(.*)$": "<rootDir>/src/components",
+      "^@contexts(.*)$": "<rootDir>/src/contexts/",
+      "^@pages(.*)$": "<rootDir>/src/pages/",
+      "^@layouts(.*)$": "<rootDir>/src/layouts"
     }
   }
 }

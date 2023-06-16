@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 type IconButtonStylesProps = {
   size: number;
   backgroundColor: string;

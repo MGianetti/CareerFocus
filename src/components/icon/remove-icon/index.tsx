@@ -1,11 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { RemoveIconProps } from "./remove-icons.types";
 
-const RemoveIcon: React.FC<RemoveIconProps> = ({
-  size = 24,
-  color = "black",
-}) => {
+const RemoveIcon: FC<RemoveIconProps> = ({ size = 24, color = "black" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

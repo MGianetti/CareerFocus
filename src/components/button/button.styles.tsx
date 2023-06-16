@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 type ButtonStylesProps = {
   backgroundColor: string;
   margin: number | string;

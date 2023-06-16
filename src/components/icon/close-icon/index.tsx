@@ -1,9 +1,7 @@
+import React, { FC } from "react";
 import { CloseIconProps } from "./close-icon.types";
 
-const CloseIcon: React.FC<CloseIconProps> = ({
-  size = 24,
-  color = "black",
-}) => {
+const CloseIcon: FC<CloseIconProps> = ({ size = 24, color = "black" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

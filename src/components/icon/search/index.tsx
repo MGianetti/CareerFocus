@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 const SearchIcon: FC = (props: React.CSSProperties) => (
   <svg

@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const menuOptionWrapperStyles: React.CSSProperties = {
   display: "flex",
   justifyContent: "space-between",

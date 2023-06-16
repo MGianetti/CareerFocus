@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const wrapperStyles: React.CSSProperties = {
   display: "flex",
   width: "480px",

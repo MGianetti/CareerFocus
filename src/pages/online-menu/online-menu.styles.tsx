@@ -1,5 +1,3 @@
-import { defaultTheme } from "@theme";
-
 export const wrapperStyles: React.CSSProperties = {
   backgroundColor: "#F8F9FA",
   padding: "30px 35px",

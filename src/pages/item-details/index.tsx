@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { useBasket } from "@contexts/basket";
 import AddToOrder from "./add-to-order";
@@ -17,11 +17,16 @@ import {
   wrapperStyles,
   checkboxStyles,
 } from "./item-details.styles";
+import { ItemModifier } from "../item-details/item-details.types";
 
 const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
   const { item, closeAfterPopoverAdding } = props;
   const [quantityToAdd, setQuantityToAdd] = useState(1);
+  const [selectedModifier, setSelectedModifier] = useState<
+    ItemModifier | undefined
+  >();
   const { dispatch } = useBasket();
+  console.log({ selectedModifier });
 
   const hasItemModifiers = item.modifiers ?? false;
 
@@ -35,7 +40,12 @@ const ItemDetails: React.FC<ItemDetailsProps> = (props) => {
           }`}</p>
         </div>
 
-        <input style={checkboxStyles} type="checkbox" />
+        <input
+          style={checkboxStyles}
+          type="checkbox"
+          onChange={() => setSelectedModifier(modifier)}
+          checked={selectedModifier?.id === modifier.id}
+        />
       </div>
     ));
 

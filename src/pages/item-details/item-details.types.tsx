@@ -3,7 +3,7 @@ interface Image {
   image: string;
 }
 
-interface ItemModifier {
+export interface ItemModifier {
   id: number;
   name: string;
   price: number;

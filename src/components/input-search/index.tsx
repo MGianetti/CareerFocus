@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { SearchIcon } from "@components/icon";
+import { SearchIcon } from "../icon";
 import { useResponsiveness } from "@contexts/responsiveness";
 import { InputSearchProps } from "./input-search.types";
 import {
@@ -10,7 +10,7 @@ import {
   wrapperStyles,
 } from "./input-search.styles";
 
-export const InputSearch: React.FC<InputSearchProps> = (props) => {
+const InputSearch: React.FC<InputSearchProps> = (props) => {
   const { placeholder } = props;
   const { isSmall } = useResponsiveness();
   const [searchText, setSearchText] = useState("");
@@ -27,3 +27,5 @@ export const InputSearch: React.FC<InputSearchProps> = (props) => {
     </div>
   );
 };
+
+export default InputSearch;

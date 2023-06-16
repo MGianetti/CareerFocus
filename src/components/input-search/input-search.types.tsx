@@ -1,3 +1,3 @@
 export interface InputSearchProps {
-  placeholder: string;
+  placeholder?: string;
 }

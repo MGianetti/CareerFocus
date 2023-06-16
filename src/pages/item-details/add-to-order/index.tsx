@@ -19,6 +19,7 @@ const AddToOrder: React.FC<AddToCartProps> = (props) => {
     handleQuantityChange,
     isPopOverClosed,
   } = props;
+
   const { isSmall } = useResponsiveness();
   const { getTotalOrderItems } = useBasket();
 

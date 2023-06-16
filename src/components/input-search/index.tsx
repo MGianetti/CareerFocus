@@ -11,8 +11,8 @@ import {
 } from "./input-search.styles";
 
 const InputSearch: React.FC<InputSearchProps> = (props) => {
-  const { isSmall } = useResponsiveness();
   const { placeholder } = props;
+  const { isSmall } = useResponsiveness();
   const [searchText, setSearchText] = useState("");
 
   return (

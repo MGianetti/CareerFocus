@@ -6,5 +6,5 @@ export interface AddToCartProps {
   isPopOverClosed?: boolean;
   onClickAddToOrder?: () => void;
   onClickYourBasket?: () => void;
-  handleQuantityChange: Dispatch<SetStateAction<number>>;
+  handleQuantityChange?: Dispatch<SetStateAction<number>>;
 }

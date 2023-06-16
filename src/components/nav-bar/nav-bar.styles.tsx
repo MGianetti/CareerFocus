@@ -1,5 +1,5 @@
 export const navStyles: React.CSSProperties = {
-  backgroundColor: "darkblue",
+  backgroundColor: "#4F372F",
   display: "flex",
   justifyContent: "center",
   width: "100%",

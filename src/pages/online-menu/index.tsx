@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import Popover from "@components/pop-over";
 import ItemDetails from "@pages/item-details";
@@ -33,9 +33,7 @@ const imgsFallback = [
 const OnlineMenu: React.FC = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
-  const [popoverContent, setPopoverContent] = useState<JSX.Element | null>(
-    null
-  );
+  const [popoverContent, setPopoverContent] = useState<JSX.Element>(<></>);
   const { isSmall } = useResponsiveness();
   const [{ restaurant, menu }] = useData();
 
@@ -71,30 +69,22 @@ const OnlineMenu: React.FC = () => {
   };
 
   useEffect(() => {
-    if (typeof popoverContent === typeof (<Basket />) && !isSmall) {
+    if (typeof popoverContent === typeof Basket && !isSmall) {
       setIsPopoverOpen(false);
-      setPopoverContent(null);
+      setPopoverContent(<></>);
     }
   }, [isSmall]);
-
-  const renderInputSearch = () => (
-    <InputSearch placeholder="Search menu items" />
-  );
-
-  const renderMenuNav = () => {
-    return <MenuNav options={sectionsMenu} />;
-  };
 
   const renderMenuOptions = () =>
     !isLoading &&
     menu?.sections.map((section, sectionIndex) => {
       const isLastOption = sectionIndex + 1 === menu.sections?.length;
       return (
-        <>
+        <Fragment key={`${section.name}-key`}>
           <Collapser category={section.name} id={`${section.name}-key`}>
             {section.items.map((item) => {
               return (
-                <>
+                <Fragment key={item.id}>
                   <MenuOption
                     title={item.name}
                     id={item.id}
@@ -104,35 +94,36 @@ const OnlineMenu: React.FC = () => {
                     isPopoverOpen={isPopoverOpen}
                     onClick={handleMenuOptionClick(item as ItemDetailsProp)}
                   />
-                </>
+                </Fragment>
               );
             })}
           </Collapser>
           {isLastOption && <div style={lastOptionStyles} />}
-        </>
+        </Fragment>
       );
     });
 
-  const renderPopoverWithContent = () => (
-    <Popover
-      isOpen={isPopoverOpen}
-      onClose={() => {
-        setPopoverContent(null);
-        setIsPopoverOpen(false);
-      }}
-    >
-      {popoverContent}
-    </Popover>
-  );
+  const handleClosePopOver = () => {
+    setPopoverContent(<></>);
+    setIsPopoverOpen(false);
+  };
 
-  const renderAddToOrderFooterOnMobile = () => (
+  const PopverWithContent = () => {
+    return (
+      <Popover isOpen={isPopoverOpen} onClose={handleClosePopOver}>
+        {popoverContent}
+      </Popover>
+    );
+  };
+
+  const AddToOrderFooterOnMobile = () => (
     <AddToOrder
       isPopOverClosed={!isPopoverOpen}
       onClickYourBasket={handleMyBasketClick}
     />
   );
 
-  const renderBasketOnPc = () => (
+  const BasketOnPc = () => (
     <div style={basketWrapperStyles}>
       <Basket />
     </div>
@@ -142,18 +133,19 @@ const OnlineMenu: React.FC = () => {
     <>
       {renderNavBar()}
       <MainLayout isLoading={isLoading}>
-        {!isLoading && renderInputSearch()}
-
+        {!isLoading && <InputSearch placeholder="Search menu items" />}
         <div style={isSmall ? wrapperSmStyles : wrapperStyles}>
           <div style={isSmall ? menuNavWrapperSmStyles : menuNavWrapperStyles}>
-            {!isLoading && renderMenuNav()}
-            {renderPopoverWithContent()}
+            {!isLoading && <MenuNav options={sectionsMenu} />}
+            <PopverWithContent />
             {renderMenuOptions()}
           </div>
 
-          {isSmall && !isPopoverOpen
-            ? renderAddToOrderFooterOnMobile()
-            : renderBasketOnPc()}
+          {isSmall && !isPopoverOpen ? (
+            <AddToOrderFooterOnMobile />
+          ) : (
+            <BasketOnPc />
+          )}
         </div>
       </MainLayout>
     </>

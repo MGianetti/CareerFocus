@@ -29,7 +29,7 @@ To start the development server, use the command:
  ```
 npm run dev
  ```
-The app will be served at `http://localhost:3000`.
+The app will be served at `http://localhost:5173`.
 
 ## Building the Application
 

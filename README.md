@@ -11,40 +11,40 @@ This project is a demonstration of a modern, best-practice React development set
 ### Installation
 
 1. Clone the repository:
-   \`\`\`
+   ```
    git clone git@github.com:MGianetti/CareerFocus.git
-   \`\`\`
+   ```
 2. Navigate to the project folder:
-   \`\`\`
+ ```
    cd CareerFocus
-   \`\`\`
+ ```
 3. Install dependencies:
-   \`\`\`
+ ```
    npm install
-   \`\`\`
+ ```
 
 ## Running the Application
 
 To start the development server, use the command:
-\`\`\`
+ ```
 npm run dev
-\`\`\`
+ ```
 The app will be served at `http://localhost:3000`.
 
 ## Building the Application
 
 To create a production build of the application, use the command:
-\`\`\`
+ ```
 npm run build
-\`\`\`
+ ```
 The built static files will be in the `dist` directory.
 
 ## Testing the Application
 
 Tests can be run with:
-\`\`\`
+ ```
 npm run test
-\`\`\`
+ ```
 
 ## Built With
 

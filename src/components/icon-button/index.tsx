@@ -46,6 +46,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         }),
       }}
       onClick={onClick}
+      aria-label={`${icon}`}
     >
       <IconComponent size={size} color={color} />
     </button>

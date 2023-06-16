@@ -3,7 +3,7 @@ export type IconButtonProps = {
   color?: string;
   icon: "add" | "chevron" | "close" | "hamburguer" | "remove" | "search";
   onClick?: () => void;
-  position: string;
+  position?: string;
   size?: number;
   margin?: string;
 };

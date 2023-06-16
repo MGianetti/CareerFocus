@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 import { IconButton } from "@components";
-import useEscapeKey from "@hooks/useEscapeKey";
+import { useEscapeKey } from "@hooks";
 import { useResponsiveness } from "@contexts/responsiveness";
 import { PopoverContentProps } from "./pop-over.types";
 import {

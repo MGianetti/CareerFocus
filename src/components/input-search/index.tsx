@@ -10,7 +10,7 @@ import {
   wrapperStyles,
 } from "./input-search.styles";
 
-const InputSearch: React.FC<InputSearchProps> = (props) => {
+export const InputSearch: React.FC<InputSearchProps> = (props) => {
   const { placeholder } = props;
   const { isSmall } = useResponsiveness();
   const [searchText, setSearchText] = useState("");
@@ -27,5 +27,3 @@ const InputSearch: React.FC<InputSearchProps> = (props) => {
     </div>
   );
 };
-
-export default InputSearch;

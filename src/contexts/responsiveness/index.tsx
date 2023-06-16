@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 
-import useMediaQuery from "@hooks/useMediaQuery";
+import { useMediaQuery } from "@hooks";
 
 type State = {
   isExtraSmall: boolean;

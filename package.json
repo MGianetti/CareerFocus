@@ -53,7 +53,8 @@
       "^@components(.*)$": "<rootDir>/src/components",
       "^@contexts(.*)$": "<rootDir>/src/contexts/",
       "^@pages(.*)$": "<rootDir>/src/pages/",
-      "^@layouts(.*)$": "<rootDir>/src/layouts"
+      "^@layouts(.*)$": "<rootDir>/src/layouts",
+      "^@hooks(.*)$": "<rootDir>/src/hooks/"
     }
   }
 }

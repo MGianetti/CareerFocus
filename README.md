@@ -1,4 +1,4 @@
-# QikServe Front end Test
+# Front end Test
 
 This project is a demonstration of a modern, best-practice React development setup. It uses TypeScript for safer, more maintainable code, Vite for a blazing-fast development experience and hot-reloading, and React Testing Library for writing tests that validate the app's functionality in a way that mirrors how users interact with it.
 

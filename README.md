@@ -24,11 +24,11 @@ This project is a demonstration of a modern, best-practice React development set
 
 1. Clone the repository:
    ```
-   git clone git@github.com:MGianetti/CareerFocus.git
+   git clone git@github.com:MGianetti/ModernReactBasket.git
    ```
 2. Navigate to the project folder:
  ```
-   cd CareerFocus
+   cd ModernReactBasket
  ```
 3. Install dependencies:
  ```
